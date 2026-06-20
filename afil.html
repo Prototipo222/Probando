@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AFIL - ICA Digital Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Articulos</button>
+        <div class="dropdown-menu">
+          <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+          <a href="sistemas-cronos.html">Cronos (sistema)</a>
+          <a href="sistemas-cadas.html">Cadas (sistema)</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+  <main class="container main-content">
+    <section class="content-section">
+      <div class="section-header">
+        <h2>AFIL - Aviso de Vuelo</h2>
+        <p>El AFIL es la notificación previa que facilita a AIS/COM y ATC la recepción anticipada de un vuelo antes de presentar el FPL definitivo.</p>
+      </div>
+
+      <div class="section-grid">
+        <article>
+          <h3>¿Qué es un AFIL?</h3>
+          <p>Es un aviso preliminar que anuncia los planes de un vuelo, proporcionando datos esenciales de la operación con anticipación.</p>
+        </article>
+        <article>
+          <h3>¿Para qué sirve?</h3>
+          <p>Permite a los servicios aeronáuticos validar información, preparar frecuencias de comunicación y verificar la disponibilidad de rutas.</p>
+        </article>
+        <article>
+          <h3>Ventajas</h3>
+          <p>Reduce errores en el FPL final, evita rechazos y agiliza los procesos de despacho y coordinación previa.</p>
+        </article>
+      </div>
+
+      <div class="field-grid">
+        <article><h3>Identificación</h3><p>Número o código de vuelo y tipo de operación previsto para la fase inicial de coordinación.</p></article>
+        <article><h3>Ruta propuesta</h3><p>Descripción anticipada de la trayectoria, incluyendo aerovías y puntos de reporte.</p></article>
+        <article><h3>Altitud prevista</h3><p>Informar el nivel de vuelo previsto ayuda a planificar la separación y la coordinación entre sectores.</p></article>
+        <article><h3>Tiempo estimado</h3><p>Calcula el EET aproximado para preparar los servicios de tránsito y el consumo de combustible.</p></article>
+        <article><h3>Aeródromo alterno</h3><p>Indica el aeropuerto de contingencia que se utilizará si el destino no es alcanzable por condiciones adversas.</p></article>
+        <article><h3>Comunicaciones</h3><p>Incluye frecuencias, guardias y información AIS/COM necesaria para la etapa inicial de la operación.</p></article>
+      </div>
+
+      <div class="section-grid">
+        <article>
+          <h3>Relación con el FPL</h3>
+          <p>El AFIL es el paso previo al FPL. Sirve para preparar la presentación formal y comprobar que los datos básicos son correctos.</p>
+        </article>
+        <article>
+          <h3>Recomendaciones</h3>
+          <p>Usa el AFIL cuando el vuelo aún no está confirmado definitivamente, pero la planificación ya está en marcha.</p>
+        </article>
+        <article>
+          <h3>Importancia operativa</h3>
+          <p>Mejora la calidad de la información recibida por AIS/COM y reduce retrabajo en el plan de vuelo final.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>AFIL · ICA Digital Hub · Coordinación previa de vuelo</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('icaTheme');
+    if (currentTheme === 'dark') document.body.classList.add('dark');
+    if (themeToggle) {
+      themeToggle.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Oscuro';
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        const isDark = document.body.classList.contains('dark');
+        localStorage.setItem('icaTheme', isDark ? 'dark' : 'light');
+        themeToggle.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+      });
+    }
+  </script>
+    <script src="app.js"></script>`r`n</body>
+</html>
+
+
+
+

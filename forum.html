@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro de preguntas FPL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+  <div class="container header-wrapper">
+        <a class="brand" href="index.html">
+            <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+            <div>
+                <span>ICA Digital Hub</span>
+            </div>
+        </a>
+        <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+            <div class="dropdown">
+                <button class="dropdown-button" type="button">Articulos</button>
+                <div class="dropdown-menu">
+                    <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+                    <a href="sistemas-cronos.html">Cronos (sistema)</a>
+                    <a href="sistemas-cadas.html">Cadas (sistema)</a>
+                </div>
+            </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+    <main class="container main-content">
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Foro persistente de preguntas</h2>
+                <p>Registra tus preguntas sobre planes de vuelo FPL/CPL y permite que Little ICA o tus compañeros aporten respuestas permanentes en el navegador.</p>
+            </div>
+            <div class="forum-main">
+                <div class="forum-sidebar">
+                    <article class="forum-card">
+                        <h3>Cómo funciona</h3>
+                        <p>Este foro guarda los temas en tu navegador. Cada pregunta puede recibir respuestas de otros usuarios o una respuesta automática de Little ICA.</p>
+                    </article>
+                    <article class="forum-card">
+                        <h3>Consejos rápidos</h3>
+                        <ul>
+                            <li>Usa títulos claros y específicos.</li>
+                            <li>Describe tu caso con aeródromos, rutas o campos del FPL.</li>
+                            <li>Pide respuestas de Little ICA si necesitas una guía rápida.</li>
+                        </ul>
+                    </article>
+                    <article class="forum-card">
+                        <button id="clearForum" class="button tertiary">Limpiar temas</button>
+                    </article>
+                    <article class="forum-card">
+                        <h3>Pequeño ICA</h3>
+                        <div id="assistantChat" class="assistant-chat">
+                            <div class="assistant-messages" id="assistantMessages"></div>
+                            <div class="assistant-input-row">
+                                <input id="assistantInput" type="text" placeholder="Habla con Pequeño ICA..." />
+                                <button id="assistantSend" class="button primary">Enviar</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="forum-content">
+                    <form class="forum-form" id="newTopicForm">
+                        <label for="newTopicTitle">Título del tema</label>
+                        <input id="newTopicTitle" type="text" required placeholder="Pregunta o título claro">
+                        <label for="newTopicDetail">Detalles</label>
+                        <textarea id="newTopicDetail" rows="5" required placeholder="Describe tu duda sobre planes de vuelo, campos FPL o normativa"></textarea>
+                        <button type="submit" class="button primary">Publicar pregunta</button>
+                    </form>
+                    <div id="topicList" class="forum-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Foro FPL | IUAC · ARO/AIS/COM · ICAO/INAC</p>
+            <p>Preguntas y respuestas guardadas localmente en tu navegador.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Forum powered by IndexedDB (local database) + Pequeño ICA chat (sin voz)
+        const DB_NAME = 'ica_forum_db';
+        const DB_VERSION = 1;
+        const STORE_TOPICS = 'topics';
+
+        const assistantMemoryKey = 'assistantMemory';
+        let assistantMemory = JSON.parse(localStorage.getItem(assistantMemoryKey) || '{}');
+
+        const assistantKnowledge = [
+            { keys: ['fpl', 'flight plan', 'plan de vuelo', 'formulario de vuelo'], response: 'El FPL es el mensaje ATS estandarizado que incluye reglas y tipo de vuelo, tipo de aeronave, equipamiento, salida, ruta, destino, alternos y observaciones según ICAO/INAC.' },
+            { keys: ['campo 7', 'field 7', '7:'], response: 'Campo 7 del FPL: reglas de vuelo y tipo de vuelo. Los códigos ICAO/AIP se usan para clasificar IFR, VFR, vuelos especiales y el tipo de operación.' },
+            { keys: ['campo 15', 'field 15', '15:'], response: 'Campo 15 del FPL: ruta. Incluye aerovías, puntos de notificación, directrices y debe ajustarse al AIP y NOTAM del país donde se opera.' },
+            { keys: ['campo 18', 'field 18', '18:'], response: 'Campo 18 del FPL: información adicional. Puede contener combustible, personas a bordo, equipos SAR, frecuencias de comunicaciones, y limitaciones operacionales.' },
+            { keys: ['inac', 'aip', 'notam', 'alterno'], response: 'INAC exige verificar el AIP y los NOTAM antes de presentar el FPL. El plan debe incluir alternos válidos, resistencia de combustible y observaciones significativas.' },
+            { keys: ['aro/ais/com', 'aro ais com', 'aro ais', 'ais/com'], response: 'ARO/AIS/COM procesa y difunde la información aeronáutica. Garantiza que el plan de vuelo y los NOTAM estén disponibles para ATC y la operación aérea.' }
+        ];
+
+        // Simple helpers for IndexedDB
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains(STORE_TOPICS)) {
+                        db.createObjectStore(STORE_TOPICS, { keyPath: 'id' });
+                    }
+                };
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
+        }
+
+        function promisifyRequest(req) {
+            return new Promise((resolve, reject) => {
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
+        }
+
+        async function getAllTopicsDB() {
+            const db = await openDB();
+            const tx = db.transaction(STORE_TOPICS, 'readonly');
+            const store = tx.objectStore(STORE_TOPICS);
+            const req = store.getAll();
+            const result = await promisifyRequest(req);
+            db.close();
+            // sort by createdAt desc
+            return result.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+        }
+
+        async function addTopicDB(topic) {
+            const db = await openDB();
+            const tx = db.transaction(STORE_TOPICS, 'readwrite');
+            const store = tx.objectStore(STORE_TOPICS);
+            store.add(topic);
+            await promisifyRequest(tx.complete || tx);
+            db.close();
+        }
+
+        async function putTopicDB(topic) {
+            const db = await openDB();
+            const tx = db.transaction(STORE_TOPICS, 'readwrite');
+            const store = tx.objectStore(STORE_TOPICS);
+            store.put(topic);
+            await promisifyRequest(tx.complete || tx);
+            db.close();
+        }
+
+        async function deleteTopicDB(id) {
+            const db = await openDB();
+            const tx = db.transaction(STORE_TOPICS, 'readwrite');
+            const store = tx.objectStore(STORE_TOPICS);
+            store.delete(id);
+            await promisifyRequest(tx.complete || tx);
+            db.close();
+        }
+
+        async function clearTopicsDB() {
+            const db = await openDB();
+            const tx = db.transaction(STORE_TOPICS, 'readwrite');
+            const store = tx.objectStore(STORE_TOPICS);
+            store.clear();
+            await promisifyRequest(tx.complete || tx);
+            db.close();
+        }
+
+        // Utility
+        function genId() { return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,9); }
+
+        // Assistant logic
+        function answerAssistant(question) {
+            const normalized = (question || '').toLowerCase();
+            if (assistantMemory[normalized]) return assistantMemory[normalized];
+            const item = assistantKnowledge.find(entry => entry.keys.some(key => normalized.includes(key)));
+            if (item) return item.response;
+            // more human-like fallback
+            const fallbacks = [
+                'Interesante pregunta. ¿Puedes dar más detalles del campo o aeródromo?',
+                'Puedo ayudarte con el FPL: indícame qué casilla te genera duda.',
+                'Si necesitas una respuesta rápida, escribe "resuelto" al final de la respuesta para marcar el tema como cerrado.'
+            ];
+            return fallbacks[Math.floor(Math.random()*fallbacks.length)];
+        }
+
+        // Render
+        const topicListEl = document.getElementById('topicList');
+        const newTopicForm = document.getElementById('newTopicForm');
+        const clearForumBtn = document.getElementById('clearForum');
+        const assistantMessagesEl = document.getElementById('assistantMessages');
+        const assistantInput = document.getElementById('assistantInput');
+        const assistantSend = document.getElementById('assistantSend');
+
+        async function renderTopics() {
+            const topics = await getAllTopicsDB();
+            topicListEl.innerHTML = '';
+            if (!topics || topics.length === 0) {
+                topicListEl.innerHTML = '<article class="forum-card"><p>Aún no hay preguntas. Crea la primera pregunta para que los estudiantes o Pequeño ICA la respondan.</p></article>';
+                return;
+            }
+            topics.forEach((topic) => {
+                const card = document.createElement('article');
+                card.className = 'forum-card topic-card';
+
+                const answersHtml = (topic.answers || []).map(answer => `
+                    <div class="answer-item">
+                        <div class="answer-meta"><strong>${answer.author}</strong> · ${new Date(answer.createdAt).toLocaleString()}</div>
+                        <div>${answer.text}</div>
+                    </div>
+                `).join('');
+
+                card.innerHTML = `
+                    <h3>${topic.title}</h3>
+                    <p>${topic.detail}</p>
+                    <div class="answer-list">${answersHtml}</div>
+                    <div class="forum-actions">
+                        <button type="button" class="button tertiary toggle-answer">Responder</button>
+                        <button type="button" class="button secondary auto-answer">Pequeño ICA responde</button>
+                    </div>
+                    <div class="answer-row" style="display:none;">
+                        <textarea class="answer-input" placeholder="Escribe una respuesta aquí"></textarea>
+                        <button type="button" class="button primary submit-answer">Agregar respuesta</button>
+                        <button type="button" class="button tertiary mark-resolved">Marcar resuelto</button>
+                    </div>
+                `;
+
+                topicListEl.appendChild(card);
+
+                const toggleBtn = card.querySelector('.toggle-answer');
+                const answerRow = card.querySelector('.answer-row');
+                const submitAnswerBtn = card.querySelector('.submit-answer');
+                const answerInput = card.querySelector('.answer-input');
+                const autoAnswerBtn = card.querySelector('.auto-answer');
+                const markResolvedBtn = card.querySelector('.mark-resolved');
+
+                toggleBtn.addEventListener('click', () => {
+                    answerRow.style.display = answerRow.style.display === 'grid' ? 'none' : 'grid';
+                });
+
+                submitAnswerBtn.addEventListener('click', async () => {
+                    const text = answerInput.value.trim();
+                    if (!text) return;
+                    await addAnswer(topic.id, text, 'Usuario');
+                    answerInput.value = '';
+                    await renderTopics();
+                });
+
+                autoAnswerBtn.addEventListener('click', async () => {
+                    const response = answerAssistant(topic.title + ' ' + topic.detail);
+                    await addAnswer(topic.id, response, 'Pequeño ICA');
+                    // if assistant indicates resolved, remove topic
+                    if (/resuelto|solucionado|cerrado|closed/i.test(response)) {
+                        await deleteTopicDB(topic.id);
+                    }
+                    await renderTopics();
+                });
+
+                markResolvedBtn.addEventListener('click', async () => {
+                    // user marks resolved -> remove topic
+                    if (!confirm('Marcar este tema como resuelto y eliminarlo?')) return;
+                    await deleteTopicDB(topic.id);
+                    await renderTopics();
+                });
+            });
+        }
+
+        async function addTopic(title, detail) {
+            const topic = { id: genId(), title, detail, answers: [], createdAt: new Date().toISOString() };
+            await addTopicDB(topic);
+            await renderTopics();
+        }
+
+        async function addAnswer(topicId, text, author) {
+            const dbTopics = await getAllTopicsDB();
+            const topic = dbTopics.find(t => t.id === topicId);
+            if (!topic) return;
+            topic.answers = topic.answers || [];
+            topic.answers.push({ text, author, createdAt: new Date().toISOString() });
+            await putTopicDB(topic);
+            // assistant memory: store simple mapping
+            assistantMemory[(topic.title + ' ' + topic.detail).toLowerCase()] = text;
+            localStorage.setItem(assistantMemoryKey, JSON.stringify(assistantMemory));
+            // if answer contains 'resuelto' or similar, delete the post
+            if (/resuelto|solucionado|cerrado|closed/i.test(text)) {
+                await deleteTopicDB(topicId);
+            }
+        }
+
+        newTopicForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            const title = document.getElementById('newTopicTitle').value.trim();
+            const detail = document.getElementById('newTopicDetail').value.trim();
+            if (!title || !detail) return;
+            await addTopic(title, detail);
+            newTopicForm.reset();
+            window.location.reload();
+        });
+
+        clearForumBtn.addEventListener('click', async () => {
+            if (!confirm('¿Seguro que deseas borrar todos los temas del foro en este navegador?')) return;
+            await clearTopicsDB();
+            await renderTopics();
+        });
+
+        // Assistant chat handlers
+        function renderAssistantMessage(author, text) {
+            const el = document.createElement('div');
+            el.className = 'assistant-message';
+            el.innerHTML = `<div class="assistant-meta"><strong>${author}</strong></div><div class="assistant-text">${text}</div>`;
+            assistantMessagesEl.appendChild(el);
+            assistantMessagesEl.scrollTop = assistantMessagesEl.scrollHeight;
+        }
+
+        assistantSend.addEventListener('click', () => {
+            const text = assistantInput.value.trim();
+            if (!text) return;
+            renderAssistantMessage('Tú', text);
+            const reply = answerAssistant(text);
+            setTimeout(() => renderAssistantMessage('Pequeño ICA', reply), 400 + Math.random()*800);
+            assistantInput.value = '';
+        });
+
+        assistantInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') assistantSend.click();
+        });
+
+        // migrate legacy localStorage topics into IndexedDB (once)
+        (async function migrateLegacy() {
+            try {
+                const legacy = JSON.parse(localStorage.getItem('forumTopics') || 'null');
+                if (legacy && Array.isArray(legacy) && legacy.length) {
+                    for (const t of legacy.reverse()) {
+                        const topic = { id: genId(), title: t.title, detail: t.detail, answers: t.answers || [], createdAt: t.createdAt || new Date().toISOString() };
+                        await addTopicDB(topic);
+                    }
+                    localStorage.removeItem('forumTopics');
+                }
+            } catch (e) {
+                console.warn('No legacy data to migrate', e);
+            }
+            await renderTopics();
+        })();
+
+        // --- Moderación activa por Pequeño ICA ---
+        // Detecta spam simple (scripts o enlaces) y responde automáticamente a temas sin respuesta.
+        const MOD_SPAM_PATTERN = /<script|http:\/\/|https:\/\//i;
+
+        async function assistantMonitor() {
+            try {
+                const topics = await getAllTopicsDB();
+                for (const topic of topics) {
+                    // simple spam filter: eliminar entradas que contengan scripts o enlaces
+                    if (MOD_SPAM_PATTERN.test(topic.title) || MOD_SPAM_PATTERN.test(topic.detail)) {
+                        await deleteTopicDB(topic.id);
+                        continue;
+                    }
+
+                    const hasAssistantAnswer = (topic.answers || []).some(a => /Pequeño ICA|Little ICA/i.test(a.author));
+                    // auto-responder si no hay respuesta de Pequeño ICA
+                    if (!hasAssistantAnswer) {
+                        const reply = answerAssistant(topic.title + ' ' + topic.detail);
+                        await addAnswer(topic.id, reply, 'Pequeño ICA');
+                        // si la respuesta incluye palabras de cierre, eliminar el tema
+                        if (/resuelto|solucionado|cerrado|closed/i.test(reply)) {
+                            await deleteTopicDB(topic.id);
+                        }
+                    }
+                }
+                await renderTopics();
+            } catch (e) {
+                console.error('Error en moderación automática', e);
+            }
+        }
+
+        // Ejecutar monitor periódicamente (cada 10s) y una ejecución inmediata
+        setInterval(assistantMonitor, 10000);
+        assistantMonitor();
+    </script>
+    <script>
+      const themeToggle = document.getElementById('themeToggle');
+      const currentTheme = localStorage.getItem('icaTheme');
+      if (currentTheme === 'dark') document.body.classList.add('dark');
+      if (themeToggle) {
+        themeToggle.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Oscuro';
+        themeToggle.addEventListener('click', () => {
+          document.body.classList.toggle('dark');
+          const isDark = document.body.classList.contains('dark');
+          localStorage.setItem('icaTheme', isDark ? 'dark' : 'light');
+          themeToggle.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+        });
+      }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

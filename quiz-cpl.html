@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz CPL — ICA Digital Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-wrapper">
+        <a class="brand" href="index.html">
+            <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+            <div>
+                <span>ICA Digital Hub</span>
+            </div>
+        </a>
+        <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+            <div class="dropdown">
+                <button class="dropdown-button" type="button">Articulos</button>
+                <div class="dropdown-menu">
+                    <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+                    <a href="sistemas-cronos.html">Cronos (sistema)</a>
+                    <a href="sistemas-cadas.html">Cadas (sistema)</a>
+                </div>
+            </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <a class="nav-link" href="search.html">Buscar resultados</a>
+    <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+    <button class="button tertiary theme-toggle" type="button">Modo Oscuro</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container main-content">
+    <section class="content-section">
+        <div class="section-header">
+            <h2>Quiz CPL</h2>
+            <p>Evalúa tu preparación para planes de vuelo actualizados y procedimientos de despacho para operaciones CPL.</p>
+        </div>
+        <div class="quiz-meta">
+            <div class="form-row">
+                <label for="quizName">Nombre</label>
+                <input id="quizName" type="text" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-row">
+                <label for="quizEmail">Correo electrónico</label>
+                <input id="quizEmail" type="email" placeholder="ejemplo@correo.com" required>
+            </div>
+            <p class="quiz-counter">Puntaje actual: <span id="quizScore">0</span>/<span id="quizTotal">6</span></p>
+            <button id="saveResult" type="button" class="button primary">Guardar resultado</button>
+            <p id="saveFeedback" class="form-feedback"></p>
+        </div>
+        <div class="quiz-panel">
+            <div id="quizQuestion" class="quiz-question"></div>
+            <div id="quizOptions" class="quiz-options"></div>
+            <button id="nextQuiz" class="button tertiary">Siguiente pregunta</button>
+            <p id="quizFeedback" class="quiz-feedback"></p>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-content">
+        <p>ICA Digital Hub · IUAC · Planes de Vuelo CPL · OACI</p>
+    </div>
+</footer>
+
+<script>
+    const quizType = 'CPL';
+    const quizItems = [
+        {
+            question: '¿Qué identifica un plan de vuelo CPL respecto a la operación?',
+            options: ['Vuelo privado sin pasajeros', 'Vuelo con pasajeros o carga regulada', 'Vuelo de entrenamiento solo IFR', 'Vuelo de ferry'],
+            answer: 1
+        },
+        {
+            question: '¿Cuál es un requisito de combustible típico en una operación CPL?',
+            options: ['Solo combustible de despegue', 'Reserva extra y combustible alterno obligatorio', 'Solo reserva en destino', 'No requiere reserva adicional'],
+            answer: 1
+        },
+        {
+            question: '¿Qué debe incluir la casilla 18 cuando hay información importante para ATC?',
+            options: ['Número de pasajeros', 'Equipo de emergencia y observaciones especiales', 'Firma del piloto', 'Código de ruta alterno'],
+            answer: 1
+        },
+        {
+            question: 'Un plan de vuelo CPL recibe prioridad en control cuando:',
+            options: ['Es un vuelo de ambulancia aérea', 'Opera con pasajeros y carga regulada', 'Es un vuelo de ocio VFR', 'No hay prioridad especial'],
+            answer: 0
+        },
+        {
+            question: '¿Por qué se indica un aeródromo alterno en un CPL?',
+            options: ['Para mejorar comodidad del pasajero', 'Para cumplir con seguridad y SAR si el destino falla', 'Para poder cambiar la ruta en vuelo', 'Porque es obligatorio para VFR'],
+            answer: 1
+        },
+        {
+            question: 'En un vuelo CPL, ¿qué representa el código de tipo de aeronave?',
+            options: ['El peso del avión', 'La configuración del avión y su certificación operativa', 'El aeropuerto de destino', 'El nivel de servicio a bordo'],
+            answer: 1
+        }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    let answered = false;
+    const quizQuestionEl = document.getElementById('quizQuestion');
+    const quizOptionsEl = document.getElementById('quizOptions');
+    const quizFeedbackEl = document.getElementById('quizFeedback');
+    const nextQuizBtn = document.getElementById('nextQuiz');
+    const quizScoreEl = document.getElementById('quizScore');
+    const quizTotalEl = document.getElementById('quizTotal');
+    const saveResultBtn = document.getElementById('saveResult');
+    const saveFeedbackEl = document.getElementById('saveFeedback');
+
+    function updateQuizStatus() {
+        quizScoreEl.textContent = score;
+        quizTotalEl.textContent = quizItems.length;
+    }
+
+    function loadQuizItem(index) {
+        const item = quizItems[index];
+        answered = false;
+        quizQuestionEl.textContent = item.question;
+        quizOptionsEl.innerHTML = '';
+        item.options.forEach((option, optionIndex) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'button tertiary';
+            btn.textContent = option;
+            btn.addEventListener('click', () => checkQuizAnswer(optionIndex));
+            quizOptionsEl.appendChild(btn);
+        });
+        quizFeedbackEl.textContent = '';
+        quizFeedbackEl.className = 'quiz-feedback';
+        updateQuizStatus();
+    }
+
+    function checkQuizAnswer(selectedIndex) {
+        if (answered) return;
+        answered = true;
+        const correct = quizItems[currentIndex].answer;
+        if (selectedIndex === correct) {
+            score += 1;
+            quizFeedbackEl.textContent = '¡Correcto! Estás en buen camino con los requisitos CPL.';
+            quizFeedbackEl.className = 'quiz-feedback correct';
+        } else {
+            quizFeedbackEl.textContent = 'Incorrecto. Revisa los procedimientos CPL y vuelve a intentarlo.';
+            quizFeedbackEl.className = 'quiz-feedback incorrect';
+        }
+        updateQuizStatus();
+    }
+
+    nextQuizBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % quizItems.length;
+        loadQuizItem(currentIndex);
+    });
+
+    saveResultBtn.addEventListener('click', async () => {
+        const name = document.getElementById('quizName').value.trim();
+        const email = document.getElementById('quizEmail').value.trim();
+        if (!name || !email) {
+            saveFeedbackEl.textContent = 'Completa nombre y correo para guardar tu resultado.';
+            saveFeedbackEl.className = 'form-feedback incorrect';
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/save-result', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    quizType,
+                    score,
+                    total: quizItems.length
+                })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || 'No se pudo guardar el resultado.');
+            saveFeedbackEl.textContent = 'Resultado guardado correctamente. Busca tu registro en Buscar resultados.';
+            saveFeedbackEl.className = 'form-feedback success';
+            window.location.reload();
+        } catch (error) {
+            saveFeedbackEl.textContent = error.message;
+            saveFeedbackEl.className = 'form-feedback incorrect';
+        }
+    });
+
+    loadQuizItem(currentIndex);
+</script>
+<script src="app.js"></script>
+</body>
+</html>
+
+

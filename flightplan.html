@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Formulario FPL/CPL — ICA Digital Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Articulos</button>
+        <div class="dropdown-menu">
+          <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+          <a href="sistemas-cronos.html">Cronos (sistema)</a>
+          <a href="sistemas-cadas.html">Cadas (sistema)</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+<main class="container main-content">
+  <section class="content-section">
+    <div class="section-header">
+      <div class="section-header-left">
+        <h2 id="formTitle">Formulario de FPL</h2>
+        <p id="formDescription">Completa este modelo con los datos del plan de vuelo conforme al formato ICAO/INAC.</p>
+      </div>
+      <a id="summaryLink" class="button secondary" href="fpl.html">Ir al resumen FPL</a>
+    </div>
+
+    <form class="flightplan-form" id="flightPlanForm">
+      <div class="form-section-heading">Datos del presentador</div>
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="planName">Nombre</label>
+          <input id="planName" name="planName" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-row">
+          <label for="planEmail">Correo electrónico</label>
+          <input id="planEmail" name="planEmail" type="email" placeholder="ejemplo@correo.com" required>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+      <div class="form-section-heading" id="formSectionHeading">Formulario FPL (casillas)</div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="messageType" id="messageTypeLabel">Tipo de mensaje (ej. FPL)</label>
+          <input id="messageType" name="messageType" placeholder="FPL" value="FPL" required>
+        </div>
+        <div class="form-row">
+          <label for="aircraftId">Matrícula / Indicativo</label>
+          <input id="aircraftId" name="aircraftId" placeholder="YV1234" required>
+        </div>
+      </div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="rulesType">Reglas / Tipo de vuelo (p.ej. I S)</label>
+          <input id="rulesType" name="rulesType" placeholder="A S" required>
+        </div>
+        <div class="form-row">
+          <label for="numAircraft">Número de aeronaves</label>
+          <input id="numAircraft" name="numAircraft" placeholder="1" required>
+        </div>
+      </div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="aircraftType">Tipo de aeronave</label>
+          <input id="aircraftType" name="aircraftType" placeholder="B738" required>
+        </div>
+        <div class="form-row">
+          <label for="wakeCategory">Categoría de estela (W)</label>
+          <input id="wakeCategory" name="wakeCategory" placeholder="M" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="equipment">Equipamiento / Transpondedor</label>
+        <input id="equipment" name="equipment" placeholder="SDFGHIJ1" required>
+      </div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="departure">Aeródromo de salida (ICAO)</label>
+          <input id="departure" name="departure" placeholder="SVMI" required>
+        </div>
+        <div class="form-row">
+          <label for="departureTime">Hora de salida (UTC) HHMM</label>
+          <input id="departureTime" name="departureTime" placeholder="1230" required>
+        </div>
+      </div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="cruiseSpeed">Velocidad de crucero</label>
+          <input id="cruiseSpeed" name="cruiseSpeed" placeholder="N0450" required>
+        </div>
+        <div class="form-row">
+          <label for="cruiseLevel">Nivel de crucero</label>
+          <input id="cruiseLevel" name="cruiseLevel" placeholder="F330" required>
+        </div>
+      </div>
+
+      <div class="form-row full-width">
+        <label for="route">Ruta (casilla 15)</label>
+        <textarea id="route" name="route" rows="4" placeholder="SVMI DCT VOR RTE ..." required></textarea>
+      </div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="destination">Aeródromo destino (ICAO)</label>
+          <input id="destination" name="destination" placeholder="SVVA" required>
+        </div>
+        <div class="form-row">
+          <label for="totalEET">EET total (HHMM)</label>
+          <input id="totalEET" name="totalEET" placeholder="0230" required>
+        </div>
+      </div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="alt1">Aeródromo alterno 1</label>
+          <input id="alt1" name="alt1" placeholder="SVBC">
+        </div>
+        <div class="form-row">
+          <label for="alt2">Aeródromo alterno 2</label>
+          <input id="alt2" name="alt2" placeholder="(opcional)">
+        </div>
+      </div>
+
+      <div class="form-grid-two">
+        <div class="form-row">
+          <label for="endurance">Resistencia de combustible (HH:MM)</label>
+          <input id="endurance" name="endurance" placeholder="05:00" required>
+        </div>
+        <div class="form-row">
+          <label for="persons">Personas a bordo</label>
+          <input id="persons" name="persons" placeholder="5" required>
+        </div>
+      </div>
+
+      <div class="form-row full-width">
+        <label for="survival">Equipo de supervivencia / chalecos</label>
+        <input id="survival" name="survival" placeholder="P/ J/ D ...">
+      </div>
+
+      <div class="form-row full-width">
+        <label for="otherInfo">Casilla 18 - Información suplementaria</label>
+        <textarea id="otherInfo" name="otherInfo" rows="3" placeholder="Información adicional para ATC"></textarea>
+      </div>
+
+      <div class="form-row">
+        <button type="submit" class="button primary" id="submitButton">Guardar / Generar FPL</button>
+      </div>
+      <p id="formFeedback" class="form-feedback"></p>
+    </form>
+
+  </section>
+</main>
+
+<div class="form-assistant-widget" id="formAssistantWidget">
+  <button class="form-assistant-toggle" id="formAssistantToggle" type="button" aria-label="Abrir asistente del formulario">
+    <span>◌</span>
+    <strong>Pequeño ICA</strong>
+  </button>
+  <section class="form-assistant-panel" id="formAssistantPanel" aria-label="Asistente del formulario" hidden>
+    <div class="form-assistant-header">
+      <div>
+        <strong>Pequeño ICA</strong>
+        <p id="formAssistantSubtitle">Te ayuda a revisar tu formulario FPL</p>
+      </div>
+      <button class="form-assistant-close" id="formAssistantClose" type="button" aria-label="Cerrar asistente">×</button>
+    </div>
+    <div class="form-assistant-messages" id="formAssistantMessages">
+      <div class="form-assistant-bubble assistant">
+        <div class="form-assistant-text">Hola, estoy aquí para ayudarte con tu formulario.</div>
+      </div>
+    </div>
+    <form class="form-assistant-form" id="formAssistantForm">
+      <input id="formAssistantInput" type="text" placeholder="Pregunta algo..." autocomplete="off">
+      <button type="submit" class="button primary">➤</button>
+    </form>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <p>ICA Digital Hub · IUAC · Plan de Vuelo · OACI</p>
+  </div>
+</footer>
+
+<script>
+  const flightPlanForm = document.getElementById('flightPlanForm');
+  const formFeedback = document.getElementById('formFeedback');
+  const formTitle = document.getElementById('formTitle');
+  const formDescription = document.getElementById('formDescription');
+  const formSectionHeading = document.getElementById('formSectionHeading');
+  const messageType = document.getElementById('messageType');
+  const messageTypeLabel = document.getElementById('messageTypeLabel');
+  const submitButton = document.getElementById('submitButton');
+  const summaryLink = document.getElementById('summaryLink');
+  const formAssistantSubtitle = document.getElementById('formAssistantSubtitle');
+  const formAssistantMessages = document.getElementById('formAssistantMessages');
+  const formAssistantForm = document.getElementById('formAssistantForm');
+  const formAssistantInput = document.getElementById('formAssistantInput');
+  const formAssistantWidget = document.getElementById('formAssistantWidget');
+  const formAssistantToggle = document.getElementById('formAssistantToggle');
+  const formAssistantPanel = document.getElementById('formAssistantPanel');
+  const formAssistantClose = document.getElementById('formAssistantClose');
+
+  function getQueryParam(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
+
+  const selectedType = (getQueryParam('type') || '').toLowerCase() === 'cpl' ? 'CPL' : 'FPL';
+
+  function updateFormType(type) {
+    const isCpl = type === 'CPL';
+    formTitle.textContent = isCpl ? 'Formulario de CPL' : 'Formulario de FPL';
+    formDescription.textContent = isCpl
+      ? 'Completa este modelo con los datos del plan de vuelo actualizado conforme al formato ICAO/INAC.'
+      : 'Completa este modelo con los datos del plan de vuelo conforme al formato ICAO/INAC.';
+    formSectionHeading.textContent = isCpl ? 'Formulario CPL (casillas)' : 'Formulario FPL (casillas)';
+    messageTypeLabel.textContent = isCpl ? 'Tipo de mensaje (ej. CPL)' : 'Tipo de mensaje (ej. FPL)';
+    messageType.value = type;
+    messageType.placeholder = type;
+    submitButton.textContent = `Guardar / Generar ${type}`;
+    summaryLink.href = isCpl ? 'cpl.html' : 'fpl.html';
+    summaryLink.textContent = isCpl ? 'Ir al resumen CPL' : 'Ir al resumen FPL';
+    document.title = isCpl ? 'Formulario CPL — ICA Digital Hub' : 'Formulario FPL — ICA Digital Hub';
+    formAssistantSubtitle.textContent = isCpl
+      ? 'Te ayuda a revisar tu formulario CPL'
+      : 'Te ayuda a revisar tu formulario FPL';
+  }
+
+  function addAssistantBubble(text, sender = 'assistant') {
+    const bubble = document.createElement('div');
+    bubble.className = `form-assistant-bubble ${sender}`;
+    bubble.innerHTML = `<div class="form-assistant-text">${text}</div>`;
+    formAssistantMessages.appendChild(bubble);
+    formAssistantMessages.scrollTop = formAssistantMessages.scrollHeight;
+  }
+
+  function getFieldFocusHelp(fieldId) {
+    const helpMap = {
+      messageType: 'Esta casilla indica si estás trabajando con FPL o CPL. Revisa que el tipo coincida con el formulario que vas a usar.',
+      equipment: 'En equipo/transpondedor, revisa que el código sea coherente con la aeronave y con la operación que vas a presentar.',
+      departure: 'En salida, verifica el código ICAO del aeródromo y que sea el correcto para el inicio del vuelo.',
+      departureTime: 'En hora de salida, revisa el formato UTC y que el tiempo sea consistente con la ruta y el plan.',
+      cruiseSpeed: 'En velocidad de crucero, asegúrate de que el valor esté expresado correctamente para la operación.',
+      cruiseLevel: 'En nivel de crucero, confirma que el nivel sea apropiado para la ruta y la fase del vuelo.',
+      route: 'En la ruta, revisa la secuencia del trayecto y que quede clara y lógica para la operación.',
+      destination: 'En destino, confirma el aeródromo correcto y que coincida con la ruta planteada.',
+      totalEET: 'En EET, revisa que el tiempo total sea coherente con la distancia y el perfil del vuelo.',
+      alt1: 'En alterno 1, verifica que sea un aeródromo viable para la operación si se necesita.',
+      endurance: 'En combustible, revisa que el tiempo disponible y la reserva sean razonables para la duración del vuelo.',
+      persons: 'En personas a bordo, confirma que la cifra sea real y esté alineada con la operación.',
+      otherInfo: 'En información suplementaria, usa esta casilla para anotar observaciones importantes que puedan ayudar a la coordinación.'
+    };
+    return helpMap[fieldId] || 'Revisa este campo con cuidado y compara la información con el resto del formulario.';
+  }
+
+  function openWebSearch(term) {
+    const query = encodeURIComponent(term);
+    const url = `https://www.bing.com/search?q=${query}`;
+    try {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } catch (e) {}
+  }
+
+  function getFormAssistantReply(question) {
+    const q = question.toLowerCase();
+    const isCpl = selectedType === 'CPL';
+
+    if (q.includes('buscar') || q.includes('investigar') || q.includes('internet') || q.includes('consulta') || q.includes('revisar en internet') || q.includes('buscar en internet')) {
+      const term = question.replace(/(?:buscar|investigar|consulta|internet|revisar en internet|buscar en internet)/gi, '').trim() || (isCpl ? 'CPL aviación' : 'FPL aviación');
+      openWebSearch(term);
+      return `Puedo ayudarte a buscar eso en internet. Abajo te dejo una búsqueda rápida para: ${term}. Si quieres, también puedo orientarte sobre cómo usar esa información en el formulario.`;
+    }
+
+    if (q.includes('no estoy seguro') || q.includes('no sé') || q.includes('no se') || q.includes('no estoy segura') || q.includes('no estoy seguro de esto') || q.includes('no sé cómo') || q.includes('no se cómo') || q.includes('duda') || q.includes('no estoy seguro si')) {
+      const term = isCpl ? 'CPL aviación' : 'FPL aviación';
+      openWebSearch(term);
+      return `Puedo ayudarte a confirmar eso. Voy a abrir una búsqueda rápida sobre ${term} para que revises la información con más detalle.`;
+    }
+
+    if (q.includes('ruta') || q.includes('casilla 15') || q.includes('campo 15')) {
+      return isCpl
+        ? 'En el CPL, revisa que la ruta actualizada esté coherente con la operación vigente y con cualquier cambio de último momento. Ejemplo: si cambias de SVMI a SVVA, asegúrate de que la secuencia y el tiempo sigan siendo lógicos.'
+        : 'En el FPL, la ruta debe ser clara, consistente y alineada con la salida, el destino y los alternos. Ejemplo: SVMI DCT VOR RTE... debe verse ordenado y completo.';
+    }
+    if (q.includes('alterno') || q.includes('alt') || q.includes('casilla 16')) {
+      return isCpl
+        ? 'En el CPL, verifica que el alterno siga siendo válido para la operación actual. Ejemplo: si el destino cambia, el alterno también debe ajustarse a la nueva realidad.'
+        : 'En el FPL, revisa bien el alterno para que cumpla con la necesidad del vuelo. Ejemplo: si el destino es SVVA, el alterno debe ser un aeródromo viable y razonable para esa operación.';
+    }
+    if (q.includes('combustible') || q.includes('reserva') || q.includes('endurance') || q.includes('casilla 18')) {
+      return 'El combustible y la reserva deben coincidir con la ruta, el tiempo estimado y las condiciones operativas. Ejemplo: si el vuelo dura 2:30, revisa que la reserva también esté cubierta por el dato que estás anotando.';
+    }
+    if (q.includes('hora') || q.includes('tiempo') || q.includes('eet') || q.includes('salida')) {
+      return 'Revisa que la hora de salida, el EET y los tiempos estimados estén bien escritos y sean consistentes entre sí. Ejemplo: 1230, 0230 y 05:00 deben tener sentido para la misma operación.';
+    }
+    if (q.includes('equip') || q.includes('transpondedor') || q.includes('radio') || q.includes('casilla 8') || q.includes('equipo')) {
+      return 'El equipo y el transpondedor deben reflejar la capacidad real de la aeronave y las comunicaciones disponibles. Ejemplo: un formato como SDFGHIJ1 ayuda a mostrar el equipo correcto para la operación.';
+    }
+    if (q.includes('aeronave') || q.includes('matrícula') || q.includes('indicativo') || q.includes('tipo de aeronave')) {
+      return 'La matrícula, el indicativo y el tipo de aeronave deben coincidir con la información operativa de la aeronave. Ejemplo: si el tipo es B738, la matrícula debe corresponder a esa misma aeronave.';
+    }
+    if (q.includes('nivel') || q.includes('velocidad') || q.includes('crucero') || q.includes('casilla 13')) {
+      return 'El nivel y la velocidad deben ser coherentes con el perfil de vuelo. Ejemplo: N0450 y F330 pueden ser correctos si el plan y la ruta lo justifican.';
+    }
+    if (q.includes('ejemplo') || q.includes('ayuda') || q.includes('cómo') || q.includes('como')) {
+      return 'Claro. Te puedo orientar con ejemplos simples: revisa primero salida, ruta, destino, alterno, combustible y equipo; luego compara cada dato con lo que aparece en el formulario.';
+    }
+    return isCpl
+      ? 'Entendido. Puedo ayudarte a revisar el CPL paso a paso con ejemplos: ruta actualizada, hora, combustible, equipo y cualquier cambio que afecte la operación. Si quieres, también puedo buscar información adicional en internet.'
+      : 'Entendido. Puedo ayudarte a revisar el FPL paso a paso con ejemplos: salida, ruta, destino, alterno, combustible, equipo y datos operativos. Si quieres, también puedo buscar información adicional en internet.';
+  }
+
+  updateFormType(selectedType);
+
+  function openFormAssistant() {
+    formAssistantPanel.hidden = false;
+    formAssistantWidget.classList.add('open');
+    formAssistantInput.focus();
+  }
+
+  function closeFormAssistant() {
+    formAssistantPanel.hidden = true;
+    formAssistantWidget.classList.remove('open');
+  }
+
+  let activeFieldId = null;
+
+  document.querySelectorAll('#flightPlanForm input, #flightPlanForm textarea').forEach(input => {
+    input.addEventListener('focus', () => {
+      activeFieldId = input.id;
+      if (!formAssistantPanel.hidden) {
+        const help = getFieldFocusHelp(activeFieldId);
+        addAssistantBubble(help, 'assistant');
+      }
+    });
+  });
+
+  formAssistantToggle.addEventListener('click', () => {
+    if (formAssistantPanel.hidden) {
+      openFormAssistant();
+      if (activeFieldId) {
+        addAssistantBubble(getFieldFocusHelp(activeFieldId), 'assistant');
+      }
+    } else {
+      closeFormAssistant();
+    }
+  });
+
+  formAssistantClose.addEventListener('click', closeFormAssistant);
+
+  formAssistantForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const question = formAssistantInput.value.trim();
+    if (!question) return;
+    addAssistantBubble(question, 'user');
+    formAssistantInput.value = '';
+    setTimeout(() => {
+      addAssistantBubble(getFormAssistantReply(question), 'assistant');
+    }, 350);
+  });
+
+  flightPlanForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const data = {
+      messageType: document.getElementById('messageType').value.trim(),
+      aircraftId: document.getElementById('aircraftId').value.trim(),
+      rulesType: document.getElementById('rulesType').value.trim(),
+      numAircraft: document.getElementById('numAircraft').value.trim(),
+      aircraftType: document.getElementById('aircraftType').value.trim(),
+      wakeCategory: document.getElementById('wakeCategory').value.trim(),
+      equipment: document.getElementById('equipment').value.trim(),
+      departure: document.getElementById('departure').value.trim(),
+      departureTime: document.getElementById('departureTime').value.trim(),
+      cruiseSpeed: document.getElementById('cruiseSpeed').value.trim(),
+      cruiseLevel: document.getElementById('cruiseLevel').value.trim(),
+      route: document.getElementById('route').value.trim(),
+      destination: document.getElementById('destination').value.trim(),
+      totalEET: document.getElementById('totalEET').value.trim(),
+      alt1: document.getElementById('alt1').value.trim(),
+      alt2: document.getElementById('alt2').value.trim(),
+      endurance: document.getElementById('endurance').value.trim(),
+      persons: document.getElementById('persons').value.trim(),
+      survival: document.getElementById('survival').value.trim(),
+      otherInfo: document.getElementById('otherInfo').value.trim()
+    };
+
+    const name = document.getElementById('planName').value.trim();
+    const email = document.getElementById('planEmail').value.trim();
+
+    if (!name || !email) {
+      formFeedback.textContent = 'Completa nombre y correo para guardar el formulario.';
+      formFeedback.className = 'form-feedback incorrect';
+      return;
+    }
+
+    try {
+      // Guardado simple en localStorage como respaldo (no hay backend garantizado)
+      const saved = JSON.parse(localStorage.getItem('savedFlightPlans') || '[]');
+      saved.push({ id: Date.now(), name, email, data, createdAt: new Date().toISOString() });
+      localStorage.setItem('savedFlightPlans', JSON.stringify(saved));
+      formFeedback.textContent = 'Formulario guardado localmente. Puedes buscarlo en Buscar resultados.';
+      formFeedback.className = 'form-feedback success';
+      window.location.reload();
+    } catch (error) {
+      formFeedback.textContent = error.message || 'Error al guardar localmente.';
+      formFeedback.className = 'form-feedback incorrect';
+    }
+  });
+</script>
+<script src="app.js"></script>
+</body>
+</html>
+
+
+

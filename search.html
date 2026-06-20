@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar resultados — ICA Digital Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+      <button class="button tertiary theme-toggle" type="button">Modo Oscuro</button>
+    </nav>
+  </div>
+</header>
+
+  <main class="container main-content">
+    <section class="content-section">
+      <div class="section-header">
+        <h2>Buscar resultados guardados</h2>
+        <p>Busca por correo electrónico, usuario o ID para recuperar quizzes y formularios anteriores.</p>
+      </div>
+
+      <div class="search-panel">
+        <form id="searchForm" class="search-form">
+          <label for="searchInput">Correo, usuario o palabra clave</label>
+          <input id="searchInput" type="text" placeholder="ejemplo@correo.com o nombre" required>
+          <button type="submit" class="button primary">Buscar</button>
+        </form>
+        <p class="search-help">Si no introduces nada, se mostrarán los últimos registros guardados.</p>
+      </div>
+
+      <div id="searchResults" class="search-results"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>ICA Digital Hub · IUAC · Resultados guardados · OACI</p>
+    </div>
+  </footer>
+
+  <script>
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    function renderItem(record, type) {
+      const title = type === 'result' ? `${record.quizType} — ${record.score}/${record.total}` : `${record.formType} — ${record.data.departure || ''} → ${record.data.destination || ''}`;
+      return `
+        <article class="result-card">
+          <div class="result-header">
+            <strong>${title}</strong>
+            <span>${new Date(record.createdAt).toLocaleString()}</span>
+          </div>
+          <div class="result-body">
+            <p><strong>Usuario:</strong> ${record.name} · ${record.email}</p>
+            ${type === 'result' ? `<p><strong>ID:</strong> ${record.id}</p>` : ''}
+            ${type === 'form' ? `<p><strong>Ruta:</strong> ${record.data.route || 'N/A'}</p>` : ''}
+          </div>
+        </article>
+      `;
+    }
+
+    async function fetchResults(query = '') {
+      const searchValue = query.trim();
+      const url = searchValue ? `/api/search?query=${encodeURIComponent(searchValue)}` : '/api/search';
+      searchResults.innerHTML = '<p>Cargando resultados...</p>';
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('No se pudo recuperar los datos.');
+        const data = await response.json();
+        if ((!data.results || data.results.length === 0) && (!data.forms || data.forms.length === 0)) {
+          searchResults.innerHTML = '<p>No se encontraron registros. Prueba con otro correo o ID.</p>';
+          return;
+        }
+
+        searchResults.innerHTML = '';
+        if (data.results && data.results.length) {
+          searchResults.innerHTML += '<h3>Resultados de quiz guardados</h3>';
+          data.results.forEach(record => {
+            searchResults.innerHTML += renderItem(record, 'result');
+          });
+        }
+        if (data.forms && data.forms.length) {
+          searchResults.innerHTML += '<h3>Formularios guardados</h3>';
+          data.forms.forEach(record => {
+            searchResults.innerHTML += renderItem(record, 'form');
+          });
+        }
+      } catch (error) {
+        searchResults.innerHTML = `<p class="error-text">${error.message}</p>`;
+      }
+    }
+
+    searchForm.addEventListener('submit', event => {
+      event.preventDefault();
+      fetchResults(searchInput.value);
+    });
+
+    fetchResults();
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+

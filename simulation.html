@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación de Transmisión CPL — CPL Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Articulos</button>
+        <div class="dropdown-menu">
+          <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+          <a href="sistemas-cronos.html">Cronos (sistema)</a>
+          <a href="sistemas-cadas.html">Cadas (sistema)</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+    <main class="container main-content">
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Simulación de Transmisión CPL</h2>
+                <p>Escucha tres ejemplos de transmisión de un plan de vuelo actualizado en español, pensados para prácticas de ARO/AIS/COM y ATC.</p>
+            </div>
+            <div class="qr-grid">
+                <article class="qr-card">
+                    <h3>Transmisión 1: Salida</h3>
+                    <p>Solicitud de autorización de salida, datos del avión, aeródromo de salida y hora estimada.</p>
+                    <audio controls preload="none">
+                        <source src="Skybound.mp3" type="audio/mpeg">
+                        Tu navegador no soporta audio HTML5.
+                    </audio>
+                </article>
+                <article class="qr-card">
+                    <h3>Transmisión 2: En ruta</h3>
+                    <p>Reporte de posición en ruta y confirmación de alterno para el plan de vuelo actualizado.</p>
+                    <audio controls preload="none">
+                        <source src="Skybound.mp3" type="audio/mpeg">
+                        Tu navegador no soporta audio HTML5.
+                    </audio>
+                </article>
+                <article class="qr-card">
+                    <h3>Transmisión 3: Llegada</h3>
+                    <p>Coordinación final con ATC antes de aterrizar y confirmación del aeródromo alterno si se requiere.</p>
+                    <audio controls preload="none">
+                        <source src="Skybound.mp3" type="audio/mpeg">
+                        Tu navegador no soporta audio HTML5.
+                    </audio>
+                </article>
+            </div>
+            <p class="small-note">Estas pistas son ejemplos de simulación. Puedes reemplazarlas con grabaciones reales de transmisiones de CPL en español cuando estén disponibles.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>Updated Flight Plan | IUAC · ARO/AIS/COM · ICAO/INAC</p>
+        </div>
+    </footer>
+    <script>
+      const themeToggle = document.getElementById('themeToggle');
+      const currentTheme = localStorage.getItem('icaTheme');
+      if (currentTheme === 'dark') document.body.classList.add('dark');
+      if (themeToggle) {
+        themeToggle.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Oscuro';
+        themeToggle.addEventListener('click', () => {
+          document.body.classList.toggle('dark');
+          const isDark = document.body.classList.contains('dark');
+          localStorage.setItem('icaTheme', isDark ? 'dark' : 'light');
+          themeToggle.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+        });
+      }
+    </script>
+    <script src="app.js"></script>`r`n</body>
+</html>
+
+
+

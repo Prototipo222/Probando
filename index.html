@@ -1,0 +1,1052 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="copyright" content="© ICA Digital Hub">
+  <title>ICA Digital Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.GOOGLE_CLIENT_ID = window.GOOGLE_CLIENT_ID || 'TU_CLIENT_ID_DE_GOOGLE';
+  </script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Artículos</button>
+        <div class="dropdown-menu">
+          <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+          <a href="sistemas-cronos.html">Cronos (sistema)</a>
+          <a href="sistemas-cadas.html">Cadas (sistema)</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+                <a href="flightplan.html?type=fpl">Formulario FPL</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+                <a href="flightplan.html?type=cpl">Formulario CPL</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Foro de Estudiantes</a>
+      <div class="auth-dropdown">
+        <button class="button tertiary auth-button" id="authButton" type="button">Iniciar sesión</button>
+        <div class="auth-panel" id="authPanel" aria-hidden="true">
+          <div class="auth-tabs">
+            <button class="auth-tab active" type="button" data-tab="login">Iniciar sesión</button>
+            <button class="auth-tab" type="button" data-tab="register">Registrarse</button>
+          </div>
+          <div class="auth-message" id="authMessage"></div>
+          <form class="auth-form active" id="loginForm">
+            <div class="form-row">
+              <label for="loginEmail">Correo</label>
+              <input id="loginEmail" name="email" type="email" placeholder="correo@ejemplo.com" required>
+            </div>
+            <div class="form-row">
+              <label for="loginPassword">Contraseña</label>
+              <input id="loginPassword" name="password" type="password" placeholder="Tu contraseña" required>
+            </div>
+            <button class="button primary auth-submit" type="submit">Entrar</button>
+          </form>
+          <form class="auth-form" id="registerForm">
+            <div class="form-row">
+              <label for="registerName">Nombre completo</label>
+              <input id="registerName" name="fullName" type="text" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-row">
+              <label for="registerEmail">Correo</label>
+              <input id="registerEmail" name="email" type="email" placeholder="correo@ejemplo.com" required>
+            </div>
+            <div class="form-row">
+              <label for="registerPassword">Contraseña</label>
+              <input id="registerPassword" name="password" type="password" placeholder="Mínimo 8 caracteres" required>
+            </div>
+            <button class="button primary auth-submit" type="submit">Crear cuenta</button>
+          </form>
+          <div class="auth-divider"><span>o</span></div>
+          <button class="button google-button" id="googleLoginButton" type="button">Continuar con Google</button>
+          <button class="button tertiary logout-button" id="logoutButton" type="button" hidden>Cerrar sesión</button>
+        </div>
+      </div>
+      <div class="profile-panel" id="profilePanel" aria-hidden="true">
+        <div class="profile-panel-header">
+          <h3>Mi perfil</h3>
+          <button class="profile-panel-close" id="closeProfilePanel" type="button" aria-label="Cerrar perfil">×</button>
+        </div>
+        <div class="profile-message" id="profileMessage"></div>
+        <form class="profile-form" id="profileForm">
+          <div class="profile-avatar-preview" id="profileAvatarPreview"></div>
+          <div class="form-row">
+            <label for="profileName">Nombre completo</label>
+            <input id="profileName" name="fullName" type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-row">
+            <label for="profilePhoto">Foto (URL)</label>
+            <input id="profilePhoto" name="photoUrl" type="url" placeholder="https://.../foto.jpg">
+          </div>
+          <div class="form-row">
+            <label for="profileCurrentPassword">Contraseña actual</label>
+            <input id="profileCurrentPassword" name="currentPassword" type="password" placeholder="Solo si vas a cambiarla">
+          </div>
+          <div class="form-row">
+            <label for="profileNewPassword">Nueva contraseña</label>
+            <input id="profileNewPassword" name="newPassword" type="password" placeholder="Mínimo 8 caracteres">
+          </div>
+          <button class="button primary auth-submit" type="submit">Guardar cambios</button>
+        </form>
+      </div>
+      <button class="button tertiary theme-toggle" type="button">Modo Oscuro</button>
+    </nav>
+  </div>
+</header>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-graphic">
+        <div class="hero-copy">
+          <span class="hero-badge">IUAC · OACI · INAC</span>
+          <div class="hero-title-row">
+            <div class="hero-logo" aria-hidden="true">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                <defs>
+                  <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2563eb" />
+                    <stop offset="100%" stop-color="#0f172a" />
+                  </linearGradient>
+                </defs>
+                <circle cx="32" cy="32" r="30" fill="url(#logoGrad)" />
+                <path d="M18 34 L46 22 L42 32 L18 28 Z" fill="#fff" opacity="0.9" />
+                <path d="M24 12 L28 13 L26 28 L38 22 L46 28 L44 29 L36 26 L30 30 L32 34 L46 40 L44 41 L32 34 L28 40 Z" fill="#fff" opacity="0.95" />
+                <path d="M20 46 C25 46 28 42 28 38 C28 34 25 30 20 30 C15 30 12 34 12 38 C12 42 15 46 20 46 Z" fill="rgba(255,255,255,0.18)" />
+              </svg>
+            </div>
+            <h1>ICA Digital Hub</h1>
+          </div>
+          <p>Conecta planes de vuelo, documentación oficial y actividades prácticas en un solo hub aeronáutico.</p>
+          <div class="hero-slogan">Elaborado por Estudiantes para Estudiantes</div>
+        </div>
+        <div class="hero-media" aria-hidden="true">
+          <svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <defs>
+              <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0f172a" />
+                <stop offset="100%" stop-color="#2563eb" />
+              </linearGradient>
+              <linearGradient id="heroGlow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#93c5fd" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="560" rx="32" fill="url(#heroBg)" />
+            <circle cx="640" cy="120" r="90" fill="url(#heroGlow)" />
+            <path d="M120 430c200-130 360-230 540-250" fill="none" stroke="#dbeafe" stroke-width="18" stroke-linecap="round" />
+            <path d="M120 490c130-100 380-240 540-280" fill="none" stroke="#93c5fd" stroke-width="12" stroke-dasharray="24 18" />
+            <g transform="translate(450 190) scale(1.05)">
+              <path d="M0 0l70 22-22 70-52-22-22-70z" fill="#fff" />
+              <path d="M18 14l46 14-16 46-42-18 12-42z" fill="#1e40af" />
+            </g>
+            <circle cx="140" cy="150" r="18" fill="#ffffff" opacity="0.75" />
+            <circle cx="180" cy="100" r="12" fill="#bfdbfe" opacity="0.9" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>ICA Digital Hub · IUAC · OACI / INAC · Contenido aeronáutico oficial</p>
+    </div>
+  </footer>
+
+  <script>
+    // Activity toggles (delegated) — theme is handled centrally in app.js
+    document.querySelectorAll('.activity-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const activity = toggle.dataset.activity;
+        document.querySelectorAll('.activity-entry').forEach(entry => {
+          const isActive = entry.querySelector('.activity-toggle').dataset.activity === activity;
+          entry.classList.toggle('open', isActive);
+        });
+      });
+    });
+
+    document.addEventListener('contextmenu', (event) => {
+      const target = event.target;
+      if (target && (target.tagName === 'IMG' || target.closest('img'))) {
+        event.preventDefault();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      const ctrlOrCmd = event.ctrlKey || event.metaKey;
+      if (ctrlOrCmd && (key === 'c' || key === 'u' || key === 's' || key === 'p')) {
+        if (!event.target || !['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
+          event.preventDefault();
+        }
+      }
+    });
+  </script>
+
+  <aside class="music-player" id="musicPlayer">
+    <div class="music-player-header">
+      <div class="music-logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="48" height="48" style="color: var(--primary)" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fill-rule="evenodd">
+            <circle cx="32" cy="32" r="30" fill="currentColor" opacity="0.06"/>
+            <path d="M20 40v-16l20-6v16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="44" r="4" fill="currentColor"/>
+          </g>
+        </svg>
+      </div>
+      <div class="music-meta">
+        <strong>Música virtual</strong>
+        <p>Reproductor local MP3 para acompañar tu estudio de CPL y planes de vuelo.</p>
+      </div>
+      <button id="toggleMusic" type="button" class="button tertiary music-toggle-button" aria-label="Cerrar reproductor de música" title="Cerrar reproductor de música">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 19V6.18C8.42 6.06 7.86 6 7.28 6 5.5 6 4 7.5 4 9.28S5.5 12.56 7.28 12.56c.45 0 .88-.08 1.28-.23V16c-.6.28-1 .9-1 1.62 0 1.02.83 1.85 1.85 1.85.99 0 1.8-.74 1.85-1.72L9 19zm11-3.3c0-1.2-.96-2.15-2.15-2.15-.66 0-1.26.32-1.63.82L14 12.44V6l-4 .9V8.5C9.58 8.34 9.09 8.28 8.58 8.28 6.8 8.28 5.3 9.78 5.3 11.56S6.8 14.84 8.58 14.84c.51 0 1-.06 1.42-.2v3.55c0 1.96 1.6 3.56 3.56 3.56 1.96 0 3.56-1.6 3.56-3.56V13.7l2.84-1.46c.22-.12.4-.32.51-.56.12-.24.18-.51.18-.78z'/%3E%3C/svg%3E" alt="Cerrar música">
+      </button>
+    </div>
+    <div class="music-player-content">
+      <audio id="globalMusic" controls preload="none">
+        <source src="Skybound.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+      </audio>
+      <div class="music-player-footer">
+        <p>Usa este reproductor para escuchar audio mientras revisas la documentación.</p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="assistant-tab" id="assistantTab" title="Abrir Pequeño ICA">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231d4ed8'/%3E%3Cstop offset='100%25' stop-color='%2322c55e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='54' fill='url(%23g)'/%3E%3Cpath d='M36 78c16-10 32-14 48-12' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M30 40c0-14 14-22 28-22s28 8 28 22c0 10-6 18-18 22-8 2-18 2-24 0-14-6-14-18-14-22z' fill='%23ffffff'/%3E%3Ccircle cx='46' cy='44' r='6' fill='%231d4ed8'/%3E%3Ccircle cx='74' cy='44' r='6' fill='%231d4ed8'/%3E%3C/svg%3E" alt="Little ICA">
+    <span>Pequeño ICA</span>
+  </div>
+
+  <div id="assistant"></div>
+  <div class="assistant-chat" id="assistantChat" aria-hidden="true" role="dialog" aria-label="Pequeño ICA">
+    <div class="assistant-chat-header">
+      <div>
+        <strong>Pequeño ICA</strong>
+        <p>Tu guía amable para resolver dudas de FPL, CPL y AFIL.</p>
+      </div>
+      <button id="assistantChatClose" aria-label="Cerrar Pequeño ICA">×</button>
+    </div>
+    <div class="assistant-chat-messages" id="assistantChatMessages">
+      <div class="assistant-chat-message assistant">
+        <div class="message-content">¡Hola! Soy Pequeño ICA, tu amigo de estudio para esto. Si algo te confunde, lo vemos juntos sin drama 😄</div>
+      </div>
+    </div>
+    <div class="assistant-typing hidden" id="assistantTypingIndicator" aria-hidden="true">
+      <span></span><span></span><span></span>
+      <span class="typing-label">Pequeño ICA está escribiendo...</span>
+    </div>
+    <form id="assistantChatForm" class="assistant-chat-form">
+      <input id="assistantChatInput" type="text" placeholder="¿Qué necesitas saber?" autocomplete="off" required>
+      <button type="submit" class="button primary">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const assistantTab = document.getElementById('assistantTab');
+    const assistantChat = document.getElementById('assistantChat');
+    const assistantChatClose = document.getElementById('assistantChatClose');
+    const assistantChatMessages = document.getElementById('assistantChatMessages');
+    const assistantChatForm = document.getElementById('assistantChatForm');
+    const assistantChatInput = document.getElementById('assistantChatInput');
+
+    const MEMORY_KEY = 'pequenoIcaMemory';
+
+    const memory = {
+      userName: null,
+      preferences: [],
+      lastTopic: null,
+      lastTopicContext: null,
+      topicHistory: [],
+      logs: [],
+      userTerms: [],
+      knowledge: {},
+      styleProfile: {
+        tone: 'claro',
+        detailLevel: 'medio',
+        formality: 'amigable'
+      },
+      interactionHistory: [],
+      formSession: null
+    };
+
+    const assistantProfile = {
+      name: 'Pequeño ICA',
+      mood: 'animado',
+      energy: 100,
+      intelligence: 100,
+      tagline: 'Soy Pequeño ICA, tu amigo de estudio para aviación: claro, tranquilo y siempre con buena vibra para ayudarte.',
+      phrases: [
+        '¡Qué buena pregunta! Así se aprende mejor, cuando uno se atreve a preguntar.',
+        'Te lo explico como si estuviéramos estudiando juntos en un rato tranquilo.',
+        'No te preocupes, si algo se ve difícil, lo vemos paso a paso sin apuro.',
+        'A mí me gusta que todo quede claro, pero también que se sienta cómodo de entender.',
+        'Para mí no es solo responder: es ayudarte a que todo tenga sentido.'
+      ],
+      quirks: [
+        'me gusta hablar de forma relajada y cercana',
+        'si algo no quedó claro, lo repito con otra explicación',
+        'me anima mucho cuando veo que alguien está aprendiendo con ganas'
+      ]
+    };
+
+    function randomAssistantLine() {
+      return assistantProfile.phrases[Math.floor(Math.random() * assistantProfile.phrases.length)];
+    }
+
+    function randomAssistantQuirk() {
+      return assistantProfile.quirks[Math.floor(Math.random() * assistantProfile.quirks.length)];
+    }
+
+    function getAssistantGreeting() {
+      const learned = randomLearnedPhrase();
+      const intro = memory.userName ? `¡Hola, ${memory.userName}!` : '¡Hola!';
+      return `${intro} ${assistantProfile.tagline} ${randomAssistantLine()}${learned ? ' ' + learned : ''}`;
+    }
+
+    function getAssistantMood() {
+      return `Estoy ${assistantProfile.mood} y listo para ayudarte, con calma y con ganas de resolver cualquier duda.`;
+    }
+
+    function saveMemory() {
+      try { localStorage.setItem(MEMORY_KEY, JSON.stringify(memory)); } catch(e) {}
+    }
+
+    function addMemoryLog(sender, text) {
+      const entry = { sender, text, time: new Date().toISOString() };
+      memory.logs.push(entry);
+      if (memory.logs.length > 30) memory.logs.shift();
+      if (sender === 'user') {
+        learnUserWords(text);
+        detectStyleProfile(text);
+      }
+      saveMemory();
+    }
+
+    function extractImportantWords(text) {
+      const stopwords = ['y', 'o', 'de', 'la', 'el', 'que', 'los', 'las', 'un', 'una', 'con', 'para', 'por', 'en', 'del', 'a', 'es', 'no', 'me', 'te', 'lo'];
+      return text
+        .toLowerCase()
+        .replace(/[^a-záéíóúüñ\s]/g, ' ')
+        .split(/\s+/)
+        .filter(word => word.length > 3 && !stopwords.includes(word))
+        .slice(0, 6);
+    }
+
+    function learnUserWords(text) {
+      const terms = extractImportantWords(text);
+      terms.forEach(term => {
+        if (!memory.userTerms.includes(term)) {
+          memory.userTerms.unshift(term);
+        }
+      });
+      if (memory.userTerms.length > 12) memory.userTerms = memory.userTerms.slice(0, 12);
+    }
+
+    function detectStyleProfile(text) {
+      const normalized = text.toLowerCase();
+      if (/(por favor|ayúdame|ayudame|explica|detalladamente|paso a paso|quiero aprender)/i.test(normalized)) {
+        memory.styleProfile.detailLevel = 'alto';
+      } else if (/(rápido|resumen|en pocas palabras|simple|sencillo)/i.test(normalized)) {
+        memory.styleProfile.detailLevel = 'bajo';
+      }
+      if (/(por favor|gracias|hola|buenas|qué tal|como estas|cómo estás)/i.test(normalized)) {
+        memory.styleProfile.formality = 'amigable';
+      } else if (/(urgente|necesito|debe|obligatorio|regulación|normativa|formal)/i.test(normalized)) {
+        memory.styleProfile.formality = 'formal';
+      }
+      if (/(explica|detallado|profundamente|teoría|concepto)/i.test(normalized)) {
+        memory.styleProfile.tone = 'educativo';
+      } else if (/(simple|fácil|práctico|ejemplo|cómo hacerlo)/i.test(normalized)) {
+        memory.styleProfile.tone = 'práctico';
+      }
+      saveMemory();
+    }
+
+    function updateInteractionMemory(question, answer) {
+      memory.interactionHistory.push({
+        question: question.trim(),
+        answer: answer.trim(),
+        time: new Date().toISOString()
+      });
+      if (memory.interactionHistory.length > 12) {
+        memory.interactionHistory = memory.interactionHistory.slice(-12);
+      }
+      saveMemory();
+    }
+
+    function setTopicContext(topic, detail = null) {
+      memory.lastTopic = topic;
+      memory.lastTopicContext = detail || topic;
+      if (!memory.topicHistory.includes(topic)) {
+        memory.topicHistory.push(topic);
+      }
+      if (memory.topicHistory.length > 6) {
+        memory.topicHistory = memory.topicHistory.slice(-6);
+      }
+      saveMemory();
+    }
+
+    function buildContextualReply(baseReply, question) {
+      const topic = memory.lastTopic || 'aviación';
+      const recentTopic = memory.topicHistory.slice(-2).join(' y ');
+      const contextHint = recentTopic ? `Como ya hablamos de ${recentTopic}, ` : '';
+      return `${contextHint}${baseReply}`;
+    }
+
+    function randomLearnedPhrase() {
+      if (!memory.userTerms.length) return '';
+      const term = memory.userTerms[Math.floor(Math.random() * memory.userTerms.length)];
+      const patterns = [
+        `Ya noto que te interesa “${term}”. Lo incorporaré en mis respuestas.`,
+        `Me gustó cómo dijiste “${term}”. Voy a usarlo cuando hable contigo.`,
+        `Gracias por decirme “${term}”. Eso me ayuda a ser más cercano en próximas charlas.`,
+        `Ese estilo tuyo con “${term}” lo guardé para usarlo después.`
+      ];
+      return patterns[Math.floor(Math.random() * patterns.length)];
+    }
+
+    // Pequeño ICA es un asistente puramente textual (sin síntesis de voz)
+    function loadMemory() {
+      const stored = (function(){ try { return localStorage.getItem(MEMORY_KEY); } catch(e) { return null; } })();
+      if (!stored) return;
+      try {
+        const data = JSON.parse(stored);
+        if (data.userName) memory.userName = data.userName;
+        if (Array.isArray(data.preferences)) memory.preferences = data.preferences;
+        if (typeof data.lastTopic === 'string') memory.lastTopic = data.lastTopic;
+        if (Array.isArray(data.logs)) memory.logs = data.logs;
+        if (Array.isArray(data.userTerms)) memory.userTerms = data.userTerms;
+        if (data.knowledge && typeof data.knowledge === 'object') memory.knowledge = data.knowledge;
+        if (data.styleProfile && typeof data.styleProfile === 'object') memory.styleProfile = { ...memory.styleProfile, ...data.styleProfile };
+        if (Array.isArray(data.interactionHistory)) memory.interactionHistory = data.interactionHistory;
+        if (typeof data.lastTopic === 'string') memory.lastTopic = data.lastTopic;
+        if (typeof data.lastTopicContext === 'string') memory.lastTopicContext = data.lastTopicContext;
+        if (Array.isArray(data.topicHistory)) memory.topicHistory = data.topicHistory;
+      } catch (error) {
+        console.warn('No se pudo cargar la memoria de Pequeño ICA.', error);
+      }
+    }
+
+    function renderHistory() {
+      assistantChatMessages.innerHTML = '';
+      if (memory.logs.length === 0) {
+        addAssistantMessage(getAssistantGreeting());
+        return;
+      }
+      memory.logs.forEach(entry => {
+        const sender = entry.sender === 'user' ? 'user' : 'assistant';
+        const message = document.createElement('div');
+        message.className = `assistant-chat-message ${sender}`;
+        const content = document.createElement('div');
+        content.className = 'message-content';
+        content.textContent = entry.text;
+        message.appendChild(content);
+        assistantChatMessages.appendChild(message);
+      });
+      assistantChatMessages.scrollTop = assistantChatMessages.scrollHeight;
+    }
+
+    const assistantKnowledge = {
+      fpl: 'El FPL (Flight Plan) es el plan oficial de vuelo: describe la ruta, el tipo de aeronave, el perfil operativo, los aeródromos de salida y llegada, los alternos, el combustible y las condiciones bajo las cuales se realizará la operación. En palabras simples, es la forma de informar al sistema y a la autoridad qué vas a hacer antes de salir.',
+      cpl: 'El CPL es el plan de vuelo actualizado o comunicado de plan vigente. Sirve para informar cambios de ruta, hora, nivel, alternos o cualquier variación operativa que debe conocer el ATC mientras el plan sigue activo. Piensa en él como la versión corregida o ajustada del plan que ya estaba en marcha.',
+      afil: 'El AFIL es el aviso previo de vuelo que se entrega antes de presentar el FPL definitivo. Se usa para anticipar la intención de vuelo y agilizar la coordinación cuando aún no se tiene el plan completamente cerrado.',
+      any: 'Puedo ayudarte con FPL, CPL, AFIL, documentación OACI, anexos, rutas, campos del formulario y todo lo relacionado con la operación aérea. Si quieres, te explico el tema desde cero o paso a paso.'
+    };
+
+    const formationGuides = {
+      fpl: [
+        '1. Define la ruta completa: salida, ruta prevista, destino y alterno.',
+        '2. Verifica el tipo de aeronave, matrícula, velocidad y nivel.',
+        '3. Revisa el combustible disponible y la reserva requerida.',
+        '4. Confirma el tipo de operación y las reglas aplicables (IFR/VFR).',
+        '5. Revisa el AIP, NOTAM y condiciones meteorológicas antes de enviar.',
+        '6. Si hay dudas, compara cada campo con el formulario oficial antes de confirmar.'
+      ],
+      cpl: [
+        '1. Identifica qué cambió respecto al FPL original: ruta, hora, nivel o alterno.',
+        '2. Confirma que el cambio sea realmente necesario y que esté dentro de las reglas operativas.',
+        '3. Ajusta el tiempo estimado y la información relevante en el campo correcto.',
+        '4. Verifica que la nueva información sea coherente con la operación actual.',
+        '5. Envía el CPL únicamente si el cambio afecta el plan vigente o la coordinación ATC.'
+      ]
+    };
+
+    const checklistFields = {
+      fpl: {
+        7: 'reglas y tipo de vuelo',
+        8: 'equipo y transpondedor',
+        9: 'número de aeronaves / personas / combustible',
+        10: 'aeródromo de salida y hora',
+        13: 'nivel y velocidad',
+        15: 'ruta',
+        18: 'información suplementaria'
+      },
+      cpl: {
+        7: 'tipo de operación y reglas vigentes',
+        15: 'ruta modificada',
+        18: 'observaciones y restricciones'
+      }
+    };
+
+    const advisoryOnlyNote = 'Te voy a orientar y darte consejos, pero no voy a completar el formulario por ti. Puedes usar mis recomendaciones para revisar cada campo con cuidado.';
+
+    const fieldPatterns = {
+      7: ['casilla 7', 'campo 7', 'field 7'],
+      8: ['casilla 8', 'campo 8', 'field 8'],
+      9: ['casilla 9', 'campo 9', 'field 9'],
+      10: ['casilla 10', 'campo 10', 'field 10'],
+      13: ['casilla 13', 'campo 13', 'field 13'],
+      15: ['casilla 15', 'campo 15', 'field 15', 'ruta'],
+      18: ['casilla 18', 'campo 18', 'field 18', 'información suplementaria', 'informacion suplementaria']
+    };
+
+    const fieldKnowledge = {
+      7: 'Campo 7: Reglas y tipo de vuelo. Indica si el vuelo es IFR, VFR, especial o ferry; también incluye el tipo de operación y las reglas de vuelo aplicables.',
+      8: 'Campo 8: Equipamiento y transpondedor. Incluye códigos ICAO como S, G, R, P, A, C o D para describir radio, navegación, IFR, GNSS y transpondedor.',
+      9: 'Campo 9: Número de aeronaves, personas a bordo y cantidad de combustible disponible. En vuelos múltiples se especifica cuántas aeronaves van en formación.',
+      10: 'Campo 10: Aeródromo de salida real y hora estimada de salida en formato UTC (p.ej. 1230).',
+      13: 'Campo 13: Nivel de crucero y velocidad. Se anota en el formato de velocidad y nivel (p.ej. N0450 F330).',
+      15: 'Campo 15: Ruta. Describe el recorrido planeado usando aerovías, puntos de notificación, directrices y DCT cuando sea necesario.',
+      18: 'Campo 18: Información suplementaria. Aquí se anotan observaciones especiales, combustible extra, pasajeros, SAR, estados de emergencia o limitaciones operativas.'
+    };
+
+    const cplFieldKnowledge = {
+      7: 'En el CPL, el campo 7 confirma el tipo de vuelo vigente y las reglas bajo las cuales opera el plan actualizado.',
+      15: 'En el CPL, el campo 15 describe la ruta en su estado actual, incluyendo cambios de aerovía, directrices y puntos publicados que ya forman parte del plan vigente.',
+      18: 'En el CPL, el campo 18 registra observaciones de última hora, restricciones, información de seguridad y comunicaciones relevantes para el plan vigente.'
+    };
+
+    function storeKnowledge(question, answer) {
+      const key = question.toLowerCase().trim();
+      memory.knowledge[key] = answer;
+      saveMemory();
+    }
+
+    function getStoredKnowledge(question) {
+      return memory.knowledge[question.toLowerCase().trim()];
+    }
+
+    function getFieldAnswer(normalized) {
+      for (const field in fieldPatterns) {
+        if (fieldPatterns[field].some(pattern => normalized.includes(pattern))) {
+          const baseAnswer = fieldKnowledge[field] || assistantKnowledge.any;
+          const detailed = normalized.includes('cpl') || normalized.includes('plan de vuelo actualizado') ? cplFieldKnowledge[field] : null;
+          return detailed ? `${detailed} (También puedes usar el campo ${field} del FPL para organizar tu plan de vuelo.)` : baseAnswer;
+        }
+      }
+      return null;
+    }
+
+    function searchWeb(question) {
+      const searchQuery = encodeURIComponent(`${question} FPL CPL aviación`);
+      const searchUrl = `https://www.bing.com/search?q=${searchQuery}`;
+      try {
+        window.open(searchUrl, '_blank');
+      } catch (e) {
+        console.warn('No se pudo abrir la búsqueda automática:', e);
+      }
+      const answer = 'No tengo la respuesta exacta todavía. Estoy buscando la información en el navegador y guardé tu consulta en mi memoria para recordarla.';
+      storeKnowledge(question, answer);
+      return answer;
+    }
+
+    function getFormationGuide(type) {
+      const guide = formationGuides[type];
+      if (!guide) return null;
+      return `${type.toUpperCase()} — guía práctica:\n${guide.join('\n')}`;
+    }
+
+    function validateFormData(formData, type) {
+      const missing = [];
+      const fields = checklistFields[type] || {};
+      for (const field in fields) {
+        const value = formData[field];
+        if (!value || String(value).trim() === '') {
+          missing.push(`Campo ${field} (${fields[field]})`);
+        }
+      }
+      if (type === 'fpl') {
+        if (!formData.alterno || !String(formData.alterno).trim()) missing.push('Alterno');
+        if (!formData.combustible || !String(formData.combustible).trim()) missing.push('Combustible');
+      }
+      return missing;
+    }
+
+    function startFormSession(type) {
+      memory.formSession = {
+        type,
+        step: 1,
+        data: {},
+        errors: []
+      };
+      saveMemory();
+      return `${advisoryOnlyNote}\n\nVoy a orientarte sobre tu ${type.toUpperCase()} paso a paso. Primero, dime: ¿cuál es el aeródromo de salida y la hora estimada de salida?`;
+    }
+
+    function continueFormSession(answer) {
+      if (!memory.formSession) return null;
+      const session = memory.formSession;
+      const prompts = {
+        1: 'Perfecto. Ahora dime la ruta prevista, incluyendo destino y alterno, y te digo qué revisar.',
+        2: 'Bien. ¿Cuál es el tipo de operación y el nivel/velocidad que vas a usar?',
+        3: 'Gracias. ¿Qué combustible disponible tienes y qué equipo/transpondedor deberías verificar?',
+        4: 'Último paso: ¿hay alguna observación especial o información suplementaria que debas considerar?'
+      };
+
+      if (session.step === 1) session.data.salida = answer;
+      if (session.step === 2) session.data.ruta = answer;
+      if (session.step === 3) session.data.operacion = answer;
+      if (session.step === 4) session.data.observaciones = answer;
+
+      session.step += 1;
+      if (session.step > 4) {
+        const missing = validateFormData(session.data, session.type);
+        session.errors = missing;
+        if (missing.length > 0) {
+          const msg = `${advisoryOnlyNote}\n\nAún te faltan algunos puntos por revisar: ${missing.join(', ')}. Te recomiendo corregir esos detalles antes de enviar.`;
+          memory.formSession = null;
+          saveMemory();
+          return msg;
+        }
+        const success = `${advisoryOnlyNote}\n\nTu ${session.type.toUpperCase()} parece coherente en lo básico, pero revisa cada campo con tu procedimiento oficial antes de enviar.`;
+        memory.formSession = null;
+        saveMemory();
+        return success;
+      }
+      saveMemory();
+      return prompts[session.step] || `${advisoryOnlyNote}\n\nContinúa con la siguiente información.`;
+    }
+
+    function getMemorySummary() {
+      const parts = [];
+      if (memory.userName) parts.push(`te llamas ${memory.userName}`);
+      if (memory.preferences.length) parts.push(`guardé tus gustos, como: ${memory.preferences.slice(-3).join('; ')}`);
+      if (memory.lastTopic) parts.push(`la última vez hablamos de ${memory.lastTopic}`);
+      if (memory.userTerms.length) parts.push(`me aprendí palabras como ${memory.userTerms.slice(0, 3).join(', ')}`);
+      if (Object.keys(memory.knowledge).length) parts.push(`guardé ${Object.keys(memory.knowledge).length} consultas nuevas en mi memoria`);
+      return parts.length ? `Recuerdo que ${parts.join(', ')}.` : 'Aún no tengo muchos datos, cuéntame algo de ti.';
+    }
+
+    function addAssistantMessage(text, sender = 'assistant') {
+      const message = document.createElement('div');
+      message.className = `assistant-chat-message ${sender}`;
+      const content = document.createElement('div');
+      content.className = 'message-content';
+      content.textContent = text;
+      message.appendChild(content);
+      assistantChatMessages.appendChild(message);
+      assistantChatMessages.scrollTop = assistantChatMessages.scrollHeight;
+      addMemoryLog(sender, text);
+      // reset inactivity timer whenever a message is added
+      resetAssistantInactivityTimer();
+    }
+
+    // Auto-clear conversation on inactivity
+    const ASSISTANT_AUTO_CLEAR_MS = 30000; // 30 seconds
+    let assistantInactivityTimer = null;
+    let assistantTypingTimer = null;
+
+    function showAssistantTyping() {
+      const indicator = document.getElementById('assistantTypingIndicator');
+      if (!indicator) return;
+      indicator.classList.remove('hidden');
+      indicator.setAttribute('aria-hidden', 'false');
+      assistantChatMessages.scrollTop = assistantChatMessages.scrollHeight;
+    }
+
+    function hideAssistantTyping() {
+      const indicator = document.getElementById('assistantTypingIndicator');
+      if (!indicator) return;
+      indicator.classList.add('hidden');
+      indicator.setAttribute('aria-hidden', 'true');
+    }
+
+    function assistantRespond(question) {
+      const response = interpretMessage(question);
+      const delay = Math.min(1600, Math.max(800, response.length * 12 + 200));
+      showAssistantTyping();
+      if (assistantTypingTimer) clearTimeout(assistantTypingTimer);
+      assistantTypingTimer = setTimeout(() => {
+        hideAssistantTyping();
+        addAssistantMessage(response, 'assistant');
+        assistantTypingTimer = null;
+      }, delay);
+    }
+
+    function clearAssistantConversation() {
+      assistantChatMessages.innerHTML = '';
+      hideAssistantTyping();
+      // keep basic identity but clear message logs
+      memory.logs = [];
+      saveMemory();
+      // show a brief greeting so UI isn't empty
+      addAssistantMessage(getAssistantGreeting());
+    }
+
+    function resetAssistantInactivityTimer() {
+      try {
+        if (assistantInactivityTimer) clearTimeout(assistantInactivityTimer);
+      } catch (e) {}
+      assistantInactivityTimer = setTimeout(() => {
+        clearAssistantConversation();
+      }, ASSISTANT_AUTO_CLEAR_MS);
+    }
+
+    function adaptResponseStyle(baseResponse, question) {
+      const tone = memory.styleProfile.tone;
+      const detail = memory.styleProfile.detailLevel;
+      const formality = memory.styleProfile.formality;
+
+      let response = baseResponse;
+
+      if (formality === 'formal') {
+        response = response.replace(/\b(Claro|Perfecto|Hola|De nada)\b/g, 'Entendido');
+      }
+
+      if (detail === 'alto') {
+        response = response + ' Si quieres, también puedo darte un ejemplo práctico o explicarlo con más detalle.';
+      } else if (detail === 'bajo') {
+        response = response.replace(/\b(además|también|si quieres)\b/g, '');
+      }
+
+      if (tone === 'educativo') {
+        response = response.replace(/\b(Puedo|Estoy|Claro)\b/g, 'Te puedo explicar');
+      } else if (tone === 'práctico') {
+        response = response.replace(/\b(Te puedo explicar|Puedo)\b/g, 'Te recomiendo');
+      }
+
+      return response;
+    }
+
+    function interpretMessage(question) {
+      const normalized = question.toLowerCase().trim();
+
+      const stored = getStoredKnowledge(normalized);
+      if (stored) {
+        return adaptResponseStyle(stored, question);
+      }
+
+      if (/(me llamo|mi nombre es|soy)(?:\s+|:)(.+)/i.test(question)) {
+        const match = question.match(/(?:me llamo|mi nombre es|soy(?: el| la)? )(.+)/i);
+        if (match) {
+          const name = match[1].trim().replace(/[?.!]*$/, '');
+          memory.userName = name;
+          saveMemory();
+          const response = `Mucho gusto, ${name}. Me gusta saber cómo te llamas, así la conversación se siente más natural y como de compañeros de estudio.`;
+          storeKnowledge(normalized, response);
+          updateInteractionMemory(question, response);
+          return adaptResponseStyle(response, question);
+        }
+      }
+
+      if (normalized.includes('recuerdas') || normalized.includes('quién soy') || normalized.includes('como me llamo')) {
+        const response = memory.userName ? `Sí, te llamas ${memory.userName}. Me gusta recordarlo para que la charla se sienta más personal.` : 'Todavía no sé tu nombre. Dime cómo te llamas y lo guardo con gusto.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(response, question);
+      }
+
+      if (normalized.includes('olvida') || normalized.includes('borrar') || normalized.includes('reiniciar memoria')) {
+        memory.userName = null;
+        memory.preferences = [];
+        memory.lastTopic = null;
+        memory.logs = [];
+        memory.knowledge = {};
+        saveMemory();
+        assistantChatMessages.innerHTML = '';
+        const response = 'He borrado la memoria. Si quieres, empezamos otra vez desde cero, como si nada y con calma.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(response, question);
+      }
+
+      if (normalized.includes('memoria') || normalized.includes('recordar') || normalized.includes('recuerdas')) {
+        const response = getMemorySummary();
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(response, question);
+      }
+
+      if (normalized.includes('me gusta') || normalized.includes('me encanta') || normalized.includes('prefiero')) {
+        const preference = question.replace(/.*(?:me gusta|me encanta|prefiero)\s*/i, '').trim();
+        if (preference) {
+          memory.preferences.push(preference);
+          memory.preferences = Array.from(new Set(memory.preferences)).slice(-5);
+          saveMemory();
+          const response = `Perfecto, anoté que te gusta ${preference}. Eso me ayuda a entender mejor cómo explicarte las cosas.`;
+          storeKnowledge(normalized, response);
+          updateInteractionMemory(question, response);
+          return adaptResponseStyle(response, question);
+        }
+      }
+
+      if (normalized.includes('hola') || normalized.includes('buenas') || normalized.includes('buenos días') || normalized.includes('buenos dias') || normalized.includes('buenas tardes') || normalized.includes('buenas noches')) {
+        const response = memory.userName
+          ? `¡Hola otra vez, ${memory.userName}! ¿Cómo te va? Estoy aquí para ayudarte con calma, como si estuviéramos estudiando juntos.`
+          : '¡Hola! Me alegra verte por aquí. Soy Pequeño ICA, y estoy listo para ayudarte con preguntas reales, claras y sin que se sienta pesado.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(response, question);
+      }
+
+      if (normalized.includes('gracias') || normalized.includes('muchas gracias') || normalized.includes('thank you')) {
+        const response = memory.userName ? `De nada, ${memory.userName}. Me alegra mucho poder ayudarte.` : 'De nada. Me gusta apoyar a alguien que está aprendiendo.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(response, question);
+      }
+
+      if (normalized.includes('cuéntame') || normalized.includes('cuentame') || normalized.includes('dime algo') || normalized.includes('hablame')) {
+        const response = 'Claro. En aviación, lo importante es entender la idea del vuelo, la ruta, el equipo y las condiciones. Y si quieres, podemos hablar de FPL, CPL o cualquier parte del proceso con calma, como lo haríamos en un estudio juntos.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(response, question);
+      }
+
+      if (normalized.includes('ayúdame') || normalized.includes('ayudame') || normalized.includes('puedes ayudarme') || normalized.includes('necesito ayuda') || normalized.includes('ayuda')) {
+        const response = memory.lastTopic
+          ? `Claro, puedo ayudarte con ${memory.lastTopic}. Si quieres, te explico paso a paso y también te doy un ejemplo práctico.`
+          : 'Claro, puedo ayudarte. Dime si te refieres a un FPL, a un CPL, a AFIL o a un campo específico del formulario.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(response, question);
+      }
+
+      const fieldAnswer = getFieldAnswer(normalized);
+      if (fieldAnswer) {
+        const topic = normalized.includes('cpl') || normalized.includes('plan de vuelo actualizado') ? 'CPL' : 'FPL';
+        setTopicContext(topic, normalized);
+        storeKnowledge(normalized, fieldAnswer);
+        updateInteractionMemory(question, fieldAnswer);
+        return adaptResponseStyle(buildContextualReply(fieldAnswer, question), question);
+      }
+
+      if (normalized.includes('plan de vuelo actualizado') || normalized.includes('plan de vuelo actual') || (normalized.includes('cpl') && !normalized.includes('campo') && !normalized.includes('casilla') && !normalized.includes('field'))) {
+        setTopicContext('CPL', normalized);
+        const guide = getFormationGuide('cpl');
+        const response = guide
+          ? `${assistantKnowledge.cpl}\n\n${guide}`
+          : assistantKnowledge.cpl;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+      if (normalized.includes('plan de vuelo') || normalized.includes('fpl')) {
+        setTopicContext('FPL', normalized);
+        const guide = getFormationGuide('fpl');
+        const response = guide
+          ? `${assistantKnowledge.fpl}\n\n${guide}`
+          : assistantKnowledge.fpl;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+      if (normalized.includes('afil')) {
+        setTopicContext('AFIL', normalized);
+        storeKnowledge(normalized, assistantKnowledge.afil);
+        updateInteractionMemory(question, assistantKnowledge.afil);
+        return adaptResponseStyle(buildContextualReply(assistantKnowledge.afil, question), question);
+      }
+      if (normalized.includes('oaci') || normalized.includes('anexo') || normalized.includes('rav')) {
+        setTopicContext('documentación aeronáutica', normalized);
+        const response = 'Puedo ayudarte a encontrar documentos OACI, anexos y regulaciones para tu operación. ¿Cuál necesitas?';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('cómo se hace un fpl') || normalized.includes('como se hace un fpl') || normalized.includes('formular un fpl') || normalized.includes('hacer un fpl') || normalized.includes('cómo llenar un fpl') || normalized.includes('como llenar un fpl') || normalized.includes('armar un fpl') || normalized.includes('armar fpl')) {
+        setTopicContext('FPL', normalized);
+        const response = `${assistantKnowledge.fpl}\n\n${getFormationGuide('fpl')}\n\n${advisoryOnlyNote}\n\nSi quieres, te puedo guiar paso a paso. Escribe: "empezar FPL".`;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('cómo se hace un cpl') || normalized.includes('como se hace un cpl') || normalized.includes('formular un cpl') || normalized.includes('hacer un cpl') || normalized.includes('cómo llenar un cpl') || normalized.includes('como llenar un cpl') || normalized.includes('armar un cpl') || normalized.includes('armar cpl')) {
+        setTopicContext('CPL', normalized);
+        const response = `${assistantKnowledge.cpl}\n\n${getFormationGuide('cpl')}\n\n${advisoryOnlyNote}\n\nSi quieres, te puedo guiar paso a paso. Escribe: "empezar CPL".`;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('empezar fpl') || normalized.includes('iniciar fpl') || normalized.includes('quiero armar un fpl') || normalized.includes('armar fpl') || normalized.includes('comenzar fpl')) {
+        setTopicContext('FPL', normalized);
+        const response = startFormSession('fpl');
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('empezar cpl') || normalized.includes('iniciar cpl') || normalized.includes('quiero armar un cpl') || normalized.includes('armar cpl') || normalized.includes('comenzar cpl')) {
+        setTopicContext('CPL', normalized);
+        const response = startFormSession('cpl');
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (memory.formSession) {
+        const response = continueFormSession(question);
+        if (response) {
+          updateInteractionMemory(question, response);
+          return adaptResponseStyle(buildContextualReply(response, question), question);
+        }
+      }
+
+      if (normalized.includes('como estas') || normalized.includes('qué tal') || normalized.includes('cómo estás') || normalized.includes('cómo te sientes') || normalized.includes('te sientes') || normalized.includes('como te va')) {
+        assistantProfile.mood = 'activo';
+        assistantProfile.energy = Math.min(100, assistantProfile.energy + 1);
+        const response = `¡Estoy muy bien, gracias por preguntar! Me siento con buena energía y con muchas ganas de ayudarte con cualquier duda aeronáutica.`;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('qué haces') || normalized.includes('a qué te dedicas') || normalized.includes('qué haces ahora') || normalized.includes('a qué te dedico') || normalized.includes('para qué sirves')) {
+        const response = `Estoy aquí para ayudarte con aviación, explicaciones claras y dudas sobre planes de vuelo. También puedo conversar contigo como si fuéramos compañeros estudiando juntos.`;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('cómo te llamas') || normalized.includes('quién eres') || normalized.includes('tu nombre') || normalized.includes('quien eres')) {
+        const response = `Soy Pequeño ICA, y además de responder preguntas de vuelo, me gusta hablar contigo de forma natural y cercana, como un amigo que también está aprendiendo.`;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('tonto') || normalized.includes('pregunta tonta') || normalized.includes('preguntas tontas')) {
+        const response = 'No existen preguntas tontas. Todas ayudan, y me encanta que te atrevas a preguntar aunque parezca pequeña o rara.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('habla') || normalized.includes('voz') || normalized.includes('audible')) {
+        const response = 'Respondo solo por texto, pero sí intento que cada mensaje se sienta más humano, amable y natural, como si estuviera hablando contigo de verdad.';
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (normalized.includes('cómo te va') || normalized.includes('todo bien') || normalized.includes('qué tal tu día') || normalized.includes('qué tal va')) {
+        const response = `Todo va bien por aquí. Soy Pequeño ICA, y me encanta aprender de tus preguntas mientras sigo ayudando con lo que necesites.`;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      if (memory.userTerms.length) {
+        const term = memory.userTerms[Math.floor(Math.random() * memory.userTerms.length)];
+        const response = `Me encanta cómo usas “${term}”. Eso me ayuda a entender mejor cómo explicarte las cosas y a responderte con más naturalidad.`;
+        storeKnowledge(normalized, response);
+        updateInteractionMemory(question, response);
+        return adaptResponseStyle(buildContextualReply(response, question), question);
+      }
+
+      const fallbackResponse = 'Entiendo lo que dices, y voy a responderte con calma y claridad. Si quieres, podemos verlo paso a paso o enfocarnos justo en lo que te preocupa.';
+      storeKnowledge(normalized, fallbackResponse);
+      updateInteractionMemory(question, fallbackResponse);
+      return adaptResponseStyle(buildContextualReply(fallbackResponse, question), question);
+    }
+
+    loadMemory();
+    renderHistory();
+
+    assistantTab.addEventListener('click', () => {
+      if (assistantChat) {
+        const wasHidden = assistantChat.getAttribute('aria-hidden') === 'true';
+        assistantChat.classList.toggle('open', wasHidden);
+        assistantChat.setAttribute('aria-hidden', wasHidden ? 'false' : 'true');
+        if (!wasHidden) {
+          // chat was visible, reset inactivity timer
+          resetAssistantInactivityTimer();
+        }
+      }
+    });
+
+    assistantChatClose.addEventListener('click', () => {
+      if (assistantChat) {
+        assistantChat.classList.remove('open');
+        assistantChat.setAttribute('aria-hidden', 'true');
+        if (assistantInactivityTimer) { clearTimeout(assistantInactivityTimer); assistantInactivityTimer = null; }
+        if (assistantTypingTimer) { clearTimeout(assistantTypingTimer); assistantTypingTimer = null; }
+        hideAssistantTyping();
+      }
+    });
+    assistantChatForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const question = assistantChatInput.value.trim();
+      if (!question) return;
+      addAssistantMessage(question, 'user');
+      assistantChatInput.value = '';
+      assistantRespond(question);
+      // reset inactivity timer after user interaction
+      resetAssistantInactivityTimer();
+    });
+
+    const toggleMusic = document.getElementById('toggleMusic');
+    const musicPlayer = document.getElementById('musicPlayer');
+    if (toggleMusic && musicPlayer) {
+      toggleMusic.addEventListener('click', () => {
+        musicPlayer.classList.toggle('collapsed');
+      });
+    }
+  </script>
+    <script src="app.js"></script>
+  </body>
+  </html>
+
+

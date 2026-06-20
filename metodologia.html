@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metodología - ICA Digital Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+  <main class="container main-content">
+    <section class="content-section">
+      <div class="section-header">
+        <h2>Metodología de diseño web</h2>
+        <p>Una estrategia enfocada en contenido claro, navegación simple y foco en necesidades aeronáuticas reales.</p>
+      </div>
+
+      <div class="section-grid">
+        <article>
+          <h3>Investigación</h3>
+          <p>Conocer el público objetivo, los requerimientos de ARO/AIS/COM y las normativas INAC/OACI es la base para organizar la página.</p>
+        </article>
+        <article>
+          <h3>Estructura</h3>
+          <p>Separa el contenido en menús desplegables: planes de vuelo, documentación, metodología y actividades. Eso mejora el acceso y reduce la carga visual.</p>
+        </article>
+        <article>
+          <h3>Diseño</h3>
+          <p>Usa un estilo oscuro opcional, tarjetas de información y botones claros para que el usuario encuentre documentos, formularios y simulaciones rápido.</p>
+        </article>
+      </div>
+
+      <div class="link-block">
+        <a class="button primary" href="https://sergiolujanmora.es/" target="_blank" rel="noopener">Visitar la página de Sergio Luján</a>
+        <span>Referencia externa sobre prácticas de accesibilidad y usabilidad web.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>Metodología web · ICA Digital Hub · Enfoque en usabilidad aeronáutica.</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('icaTheme');
+    if (currentTheme === 'dark') document.body.classList.add('dark');
+    if (themeToggle) {
+      themeToggle.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Oscuro';
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        const isDark = document.body.classList.contains('dark');
+        localStorage.setItem('icaTheme', isDark ? 'dark' : 'light');
+        themeToggle.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+      });
+    }
+  </script>
+    <script src="app.js"></script>`r`n</body>
+</html>
+
+
+
+

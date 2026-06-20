@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cadas — Sistemas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Artículos</button>
+        <div class="dropdown-menu">
+          <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Sistemas</button>
+        <div class="dropdown-menu">
+          <a href="sistemas-cronos.html">Cronos</a>
+          <a href="sistemas-cadas.html">Cadas</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Foro de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+<main class="container main-content">
+  <section class="content-section">
+    <div class="section-header">
+      <h2>Cadas</h2>
+      <p>Descripción del sistema Cadas y su uso en la transmisión de FPL/CPL en Venezuela.</p>
+    </div>
+    <article>
+      <h3>¿Qué es Cadas?</h3>
+      <p><strong>CADAS-ATS</strong> es una solución de acceso y gestión de datos aeronáuticos para servicios de tráfico aéreo, diseñada para apoyar el intercambio, procesamiento y visualización de mensajes ATS. En términos prácticos, sirve para que operadores, centros ATS, oficinas aeronáuticas y usuarios autorizados puedan consultar y gestionar información operativa de forma centralizada.</p>
+
+      <h3>Alcance del sistema</h3>
+      <p>El sistema está orientado a soportar ambientes donde se requiere interoperabilidad entre múltiples actores del entorno ATS, como torres, centros de control, oficinas aeronáuticas y usuarios de mensajería operativa. Su enfoque es facilitar la circulación segura y organizada de información aeronáutica relevante para la operación diaria.</p>
+
+      <h3>Características principales</h3>
+      <ul>
+        <li>Soporte para intercambio de mensajes ATS mediante redes como AFTN/AMHS.</li>
+        <li>Procesamiento y visualización de mensajes con una interfaz accesible desde navegador web.</li>
+        <li>Arquitectura cliente-servidor que permite distribución y control centralizado.</li>
+        <li>Capacidad para trabajar con distintos perfiles de usuario y roles operativos.</li>
+        <li>Implementación basada en tecnologías modernas, con enfoque en la estabilidad y la trazabilidad.</li>
+      </ul>
+
+      <h3>Función en la operación de vuelo</h3>
+      <ul>
+        <li>Recibe y distribuye mensajes relacionados con FPL, CPL y otras comunicaciones ATS.</li>
+        <li>Permite realizar seguimiento de la recepción y el estado del mensaje.</li>
+        <li>Facilita la coordinación entre sistemas locales y la red ATS correspondiente.</li>
+        <li>Ayuda a mantener la integridad del dato y a reducir errores operativos.</li>
+      </ul>
+
+      <h3>Diferencias clave entre Cadas y Cronos</h3>
+      <ul>
+        <li><strong>Cronos</strong> suele estar enfocado en la validación y entrega operativa de información dinámica y planes de vuelo.</li>
+        <li><strong>CADAS-ATS</strong> se orienta más al acceso, procesamiento, visualización y gestión de mensajes ATS en entorno de servicio.</li>
+        <li>Ambos pueden complementarse, pero CADAS-ATS se destaca en la interoperabilidad y el manejo del flujo de mensajes por roles y terminales.</li>
+      </ul>
+
+      <h3>Flujo de uso típico</h3>
+      <ol>
+        <li>Un usuario o sistema prepara el mensaje o plan de vuelo en el formato requerido.</li>
+        <li>El sistema lo recibe y lo valida para asegurar consistencia con los estándares ATS.</li>
+        <li>CADAS-ATS registra la transacción, asigna el estado del mensaje y lo distribuye hacia el receptor o área adecuada.</li>
+        <li>La unidad correspondiente revisa el contenido, confirma la recepción y, si aplica, ejecuta la corrección o aprobación.</li>
+      </ol>
+
+      <h3>Ventajas operativas</h3>
+      <ul>
+        <li>Mejor trazabilidad de mensajes y eventos.</li>
+        <li>Interfaz accesible para usuarios con distintos niveles de responsabilidad.</li>
+        <li>Mayor coordinación entre sistemas y áreas ATS.</li>
+        <li>Reducción del riesgo de pérdida o duplicidad de mensajes.</li>
+      </ul>
+
+      <div style="max-width:720px;margin:1rem 0;">
+        <svg viewBox="0 0 800 220" width="100%" xmlns="http://www.w3.org/2000/svg" role="img">
+          <rect x="6" y="6" width="788" height="208" rx="12" fill="#f0fdf4" stroke="#bbf7d0"/>
+          <g font-family="sans-serif" font-size="13" fill="#052e16">
+            <rect x="48" y="44" width="200" height="52" rx="8" fill="#fff" stroke="#d1fae5" />
+            <text x="76" y="76">Usuario / Sistema Operador</text>
+            <rect x="300" y="44" width="200" height="52" rx="8" fill="#fff" stroke="#d1fae5" />
+            <text x="340" y="76">CADAS-ATS</text>
+            <rect x="560" y="44" width="160" height="52" rx="8" fill="#fff" stroke="#d1fae5" />
+            <text x="590" y="76">Área ATS / ANS</text>
+            <path d="M248 70h40" stroke="#052e16" stroke-width="2" marker-end="url(#m)" />
+            <path d="M500 70h40" stroke="#052e16" stroke-width="2" marker-end="url(#m)" />
+            <defs>
+              <marker id="m" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0 0 L8 4 L0 8 z" fill="#052e16" />
+              </marker>
+            </defs>
+          </g>
+        </svg>
+      </div>
+
+      <h3>Buenas prácticas</h3>
+      <ul>
+        <li>Verificar el formato del mensaje y la ruta correcta antes de enviarlo.</li>
+        <li>Revisar periódicamente el estado de los mensajes y los acuses de recepción.</li>
+        <li>Usar ambientes de prueba para validar integraciones antes de operar en producción.</li>
+        <li>Mantener la información de contacto y la asignación de roles actualizada.</li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <p>ICA Digital Hub Â· IUAC Â· OACI / INAC Â· Contenido aeronÃ¡utico</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
+
+

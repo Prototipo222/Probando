@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cronos — Sistemas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Artículos</button>
+        <div class="dropdown-menu">
+          <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Sistemas</button>
+        <div class="dropdown-menu">
+          <a href="sistemas-cronos.html">Cronos</a>
+          <a href="sistemas-cadas.html">Cadas</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Foro de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+<main class="container main-content">
+  <section class="content-section">
+    <div class="section-header">
+      <h2>Cronos</h2>
+      <p>Descripción del sistema Cronos y cómo se utiliza para transmitir y procesar FPL/CPL en Venezuela.</p>
+    </div>
+    <article>
+      <h3>¿Qué es Cronos?</h3>
+      <p><strong>Cronos</strong> es una plataforma modular de gestión dinámica de información aeronáutica diseñada para apoyar la transición de AIS a AIM. En la práctica, permite manejar mensajes operacionales, planes de vuelo, NOTAM, OPMET y otras comunicaciones ATS con mayor control, trazabilidad y calidad de datos.</p>
+
+      <figure style="margin:1rem 0; max-width:900px;">
+        <img src="https://www.idsairnav.com/wp-content/uploads/2019/06/CRONOS_FI.jpg" alt="Interfaz y arquitectura del sistema CRONOS" style="width:100%; border-radius:1rem; border:1px solid var(--border);">
+        <figcaption style="margin-top:0.5rem; color:var(--muted); font-size:0.95rem;">Vista general del sistema CRONOS para gestión aeronautical y mensajería operativa.</figcaption>
+      </figure>
+
+      <h3>Objetivo principal</h3>
+      <p>Cronos actúa como una capa central para recibir, validar, almacenar y distribuir información aeronáutica crítica. Esto reduce la posibilidad de errores en el intercambio entre operadores, oficinas ATS y centros de información, además de mejorar la consistencia del dato.</p>
+
+      <h3>Beneficios clave</h3>
+      <ul>
+        <li>Mayor eficiencia al registrar la información una sola vez en el punto de origen.</li>
+        <li>Validación más rigurosa para evitar errores en horarios, rutas, niveles y aeródromos.</li>
+        <li>Mejor preparación previa al vuelo mediante mejor filtrado y organización de información.</li>
+        <li>Distribución más rápida y ordenada de PIB, NOTAM y cambios operacionales.</li>
+      </ul>
+
+      <h3>Aplicaciones y módulos</h3>
+      <ul>
+        <li><strong>Gestión dinámica de datos aeronáuticos:</strong> control de mensajes y eventos operacionales.</li>
+        <li><strong>Gestión de NOTAM y digital NOTAM:</strong> procesamiento y distribución de avisos y cambios relevantes.</li>
+        <li><strong>Gestión de FPL:</strong> creación, actualización, aprobación y seguimiento de planes de vuelo.</li>
+        <li><strong>Gestión de OPMET:</strong> distribución de información meteorológica para operación aérea.</li>
+        <li><strong>Gestión avanzada de PIB:</strong> organización de informes previos al vuelo para una lectura más clara y útil.</li>
+      </ul>
+
+      <h3>Flujo de trabajo típico</h3>
+      <ol>
+        <li>El operador o despacho genera el mensaje o plan de vuelo (FPL/CPL) desde una interfaz conectada.</li>
+        <li>Cronos valida el contenido según reglas y formatos requeridos.</li>
+        <li>El sistema detecta inconsistencias, alertas o datos faltantes para corrección.</li>
+        <li>Una vez aceptado, el mensaje se distribuye a la unidad ATS o dependencia responsable.</li>
+        <li>Los cambios posteriores se procesan como actualizaciones mediante CPL o mensajes de control pertinentes.</li>
+      </ol>
+
+      <h3>Mensajes y estados</h3>
+      <p>En el flujo operativo el sistema puede mostrar estados como:</p>
+      <ul>
+        <li><strong>Aceptado:</strong> el mensaje ya fue validado y entregado correctamente.</li>
+        <li><strong>En revisión:</strong> se detectaron alertas que deben corregirse.</li>
+        <li><strong>Rechazado:</strong> hay errores graves o campos obligatorios incompletos.</li>
+      </ul>
+
+      <h3>Comparación rápida con Cadas</h3>
+      <ul>
+        <li>Cronos se enfoca en la validación operativa, distribución y seguimiento del dato aeronáutico.</li>
+        <li>Cadas suele asociarse más a procesos de integración, registro y auditoría de mensajería.</li>
+        <li>Ambos pueden complementarse, pero Cronos es clave en el ciclo operativo de la información dinámica.</li>
+      </ul>
+
+      <div style="max-width:720px;margin:1rem 0;">
+        <svg viewBox="0 0 800 260" width="100%" xmlns="http://www.w3.org/2000/svg" role="img">
+          <rect x="6" y="6" width="788" height="248" rx="12" fill="#fff7ed" stroke="#fbd38d"/>
+          <g font-family="sans-serif" font-size="13" fill="#0b1220">
+            <rect x="40" y="40" width="200" height="54" rx="8" fill="#fff" stroke="#e6e7ea" />
+            <text x="64" y="72">Operador / Despacho</text>
+            <rect x="300" y="40" width="200" height="54" rx="8" fill="#fff" stroke="#e6e7ea" />
+            <text x="340" y="72">Cronos (Servidor ANS)</text>
+            <rect x="560" y="40" width="160" height="54" rx="8" fill="#fff" stroke="#e6e7ea" />
+            <text x="584" y="72">Unidad ATC</text>
+            <path d="M240 67h40" stroke="#0b1220" stroke-width="2" marker-end="url(#a)" />
+            <path d="M500 67h40" stroke="#0b1220" stroke-width="2" marker-end="url(#a)" />
+            <defs>
+              <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0 0 L8 4 L0 8 z" fill="#0b1220" />
+              </marker>
+            </defs>
+          </g>
+        </svg>
+      </div>
+
+      <h3>Buenas prácticas</h3>
+      <ul>
+        <li>Verificar el formato OACI antes de enviar cualquier mensaje.</li>
+        <li>Confirmar datos de ruta, horarios, niveles y alternos antes del envío.</li>
+        <li>Revisar alertas y acuses de recepción para corregir errores a tiempo.</li>
+        <li>Usar CPL y otras actualizaciones cuando cambie la situación operacional del vuelo.</li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <p>ICA Digital Hub Â· IUAC Â· OACI / INAC Â· Contenido aeronÃ¡utico</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
+
+

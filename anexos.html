@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anexos 11 y 12 - ICA Digital Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-wrapper">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="https://www.aviacioncivil.com.ve/wp-content/uploads/2009/11/logo_del_iuac.jpg" alt="Logo IUAC">
+      <div>
+        <span>ICA Digital Hub</span>
+      </div>
+    </a>
+    <a class="home-link" href="index.html" aria-label="Inicio" title="Inicio">&#x1F3E0;</a>
+    <nav class="nav-links">
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Planes de Vuelo</button>
+        <div class="dropdown-menu">
+          <a href="fpl.html">FPL</a>
+          <a href="cpl.html">CPL</a>
+          <a href="afil.html">AFIL</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Documentación</button>
+        <div class="dropdown-menu">
+          <a href="rav.html">RAV</a>
+          <a href="anexos.html">Anexos</a>
+          <a href="oaci.html">Documentos OACI</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button" type="button">Articulos</button>
+        <div class="dropdown-menu">
+          <a href="articulos-fpl-cpl.html">FPL/CPL en Venezuela</a>
+          <a href="sistemas-cronos.html">Cronos (sistema)</a>
+          <a href="sistemas-cadas.html">Cadas (sistema)</a>
+        </div>
+      </div>
+      <a class="nav-link" href="metodologia.html">Metodología</a>
+      <div class="dropdown activity-dropdown">
+        <button class="dropdown-button" type="button">Actividades</button>
+        <div class="dropdown-menu activity-menu">
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="fpl">FPL</button>
+            <div class="nested-menu" data-activity="fpl">
+              <a href="quiz-fpl.html">Quiz FPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+          <div class="activity-entry">
+            <button type="button" class="dropdown-link activity-toggle" data-activity="cpl">CPL</button>
+            <div class="nested-menu" data-activity="cpl">
+              <a href="quiz-cpl.html">Quiz CPL</a>
+              <a href="simulation.html">Simulación</a>
+              <a href="flightplan.html">Formulario</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="search.html">Buscar resultados</a>
+      <a class="nav-link" href="forum.html">Forum de Estudiantes</a>
+
+    </nav>
+  </div>
+</header>
+
+  <main class="container main-content">
+    <section class="content-section">
+      <div class="section-header">
+        <h2>Anexo 11 y Anexo 12</h2>
+        <p>Los anexos de OACI definen los estándares internacionales para los servicios de tránsito aéreo y búsqueda y salvamento.</p>
+      </div>
+
+      <div class="field-grid">
+        <article>
+          <h3>Anexo 11</h3>
+          <p>Establece los requisitos de los Servicios de Tránsito Aéreo (ATS), incluyendo el envío y procesamiento de planes de vuelo, control del espacio aéreo y separación.</p>
+          <p>Es el fundamento para los servicios ATC, la gestión de rutas y la coordinación de tráfico aéreo en vuelos IFR y VFR controlados.</p>
+          <a class="button primary" href="https://www.icao.int/Meetings/anconf12/Document%20Archive/AN%2011%20E.pdf" target="_blank" rel="noopener">Abrir Anexo 11</a>
+        </article>
+
+        <article>
+          <h3>Anexo 12</h3>
+          <p>Regula los servicios de búsqueda y salvamento (SAR) y los procedimientos para localizar y asistir aeronaves en peligro.</p>
+          <p>Incluye los requisitos para la coordinación con autoridades SAR y la organización de los recursos de rescate.</p>
+          <a class="button secondary" href="https://www.icao.int/Meetings/anconf12/Document%20Archive/AN%2012%20E.pdf" target="_blank" rel="noopener">Abrir Anexo 12</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>Anexos OACI · ICA Digital Hub · Información aeronáutica internacional</p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('icaTheme');
+    if (currentTheme === 'dark') document.body.classList.add('dark');
+    if (themeToggle) {
+      themeToggle.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Oscuro';
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        const isDark = document.body.classList.contains('dark');
+        localStorage.setItem('icaTheme', isDark ? 'dark' : 'light');
+        themeToggle.textContent = isDark ? 'Modo Claro' : 'Modo Oscuro';
+      });
+    }
+  </script>
+    <script src="app.js"></script>`r`n</body>
+</html>
+
+
+
+
